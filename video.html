@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nghe Chép Chính Tả (Dictation Lab)</title>
+  <style>
+    :root {
+      --jade: #2F5D55;
+      --jade-soft: #eaf1ef;
+      --gold: #C9A24B;
+      --ink: #1c1a17;
+      --ink-soft: #5c5954;
+      --paper: #fdfcf8;
+      --paper-deep: #f5f2eb;
+      --line: #e3dcc7;
+      --wrong: #c0392b;
+      --wrong-bg: #fdf0ed;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background-color: var(--paper-deep);
+      color: var(--ink);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .dictation-container {
+      width: 100%;
+      max-width: 800px;
+      background: #fff;
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--jade);
+      margin-top: 0;
+    }
+
+    /* KHUNG VIDEO YOUTUBE */
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* Tỷ lệ 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #000;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* DANH SÁCH CÂU HỎI */
+    .sentence-list {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-play-sentence {
+      background: var(--paper-deep);
+      border: 1px solid var(--line);
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-weight: bold;
+      color: var(--ink);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-play-sentence:hover, .btn-play-sentence.active {
+      background: var(--jade);
+      color: #fff;
+      border-color: var(--jade);
+    }
+
+    /* KHU VỰC ĐIỀN CHỮ (GRID INPUT) */
+    .input-area {
+      text-align: center;
+      padding: 30px 20px;
+      background: var(--paper);
+      border-radius: 16px;
+      border: 1px dashed var(--gold);
+    }
+
+    .grid-container {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .char-input {
+      width: 48px;
+      height: 56px;
+      font-size: 28px;
+      text-align: center;
+      border: 2px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      font-weight: bold;
+      color: var(--ink);
+      transition: 0.2s;
+    }
+
+    .char-input:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(201,162,75,0.15);
+    }
+
+    /* Trạng thái đúng/sai */
+    .char-input.correct {
+      border-color: var(--jade);
+      background: var(--jade-soft);
+      color: var(--jade);
+    }
+
+    .char-input.incorrect {
+      border-color: var(--wrong);
+      background: var(--wrong-bg);
+      color: var(--wrong);
+    }
+
+    /* Dấu câu (không cần nhập) */
+    .punctuation {
+      display: flex;
+      align-items: flex-end;
+      font-size: 28px;
+      padding-bottom: 5px;
+      color: var(--ink-soft);
+    }
+
+    .vietnamese-hint {
+      font-size: 16px;
+      color: var(--ink-soft);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .btn-check {
+      background: var(--gold);
+      color: #fff;
+      border: none;
+      padding: 14px 32px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 99px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(201,162,75,0.3);
+      transition: 0.2s;
+    }
+
+    .btn-check:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(201,162,75,0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dictation-container">
+    <h1>🎧 Nghe Chép Chính Tả</h1>
+    
+    <!-- Video Player -->
+    <div class="video-wrapper">
+      <div id="ytplayer"></div>
+    </div>
+
+    <!-- Danh sách câu -->
+    <div class="sentence-list" id="sentenceList">
+      <!-- Nút sẽ được sinh ra bằng Javascript -->
+    </div>
+
+    <!-- Khu vực nhập liệu -->
+    <div class="input-area" id="inputArea" style="display: none;">
+      <div class="vietnamese-hint" id="viHint">Nghĩa tiếng Việt sẽ hiện ở đây...</div>
+      
+      <!-- Các ô vuông sinh tự động -->
+      <div class="grid-container" id="gridContainer"></div>
+      
+      <button class="btn-check" id="btnCheck">✅ Kiểm tra đáp án</button>
+    </div>
+  </div>
+
+  <!-- Nạp thư viện YouTube API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+  <script>
+    // ==========================================
+    // 1. DỮ LIỆU MẪU (JSON)
+    // ==========================================
+    const lessonData = {
+      // Bác có thể thay videoId bằng bất kỳ link YouTube nào
+      videoId: "mD2C6R0Puy8", 
+      sentences: [
+        { id: 1, start: 1.0, end: 3.5, cn: "你好！", vi: "Xin chào!" },
+        { id: 2, start: 4.0, end: 7.0, cn: "我今天很高兴。", vi: "Hôm nay tôi rất vui." },
+        { id: 3, start: 8.5, end: 12.0, cn: "你喜欢学中文吗？", vi: "Bạn có thích học tiếng Trung không?" }
+      ]
+    };
+
+    let player;
+    let checkTimeInterval;
+    let currentSentenceData = null;
+
+    // ==========================================
+    // 2. KHỞI TẠO YOUTUBE PLAYER
+    // ==========================================
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('ytplayer', {
+        height: '360',
+        width: '640',
+        videoId: lessonData.videoId,
+        playerVars: {
+          'playsinline': 1,
+          'controls': 1,
+          'rel': 0
+        }
+      });
+      initUI();
+    }
+
+    // ==========================================
+    // 3. LOGIC GIAO DIỆN & TẠO Ô VUÔNG
+    // ==========================================
+    function initUI() {
+      const listContainer = document.getElementById('sentenceList');
+      
+      // Tạo nút cho từng câu
+      lessonData.sentences.forEach((sentence, index) => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-play-sentence';
+        btn.innerText = `▶ Nghe câu ${index + 1}`;
+        btn.onclick = () => playSentence(sentence, btn);
+        listContainer.appendChild(btn);
+      });
+
+      document.getElementById('btnCheck').onclick = checkAnswer;
+    }
+
+    function playSentence(sentence, btnElement) {
+      currentSentenceData = sentence;
+
+      // Đổi màu nút đang chọn
+      document.querySelectorAll('.btn-play-sentence').forEach(b => b.classList.remove('active'));
+      if(btnElement) btnElement.classList.add('active');
+
+      // Hiện khu vực nhập liệu
+      document.getElementById('inputArea').style.display = 'block';
+      document.getElementById('viHint').innerText = "Gợi ý: " + sentence.vi;
+
+      // Tua video và phát
+      player.seekTo(sentence.start);
+      player.playVideo();
+
+      // Cài đặt hẹn giờ để tự động DỪNG video khi đến giây kết thúc
+      clearInterval(checkTimeInterval);
+      checkTimeInterval = setInterval(() => {
+        if (player.getCurrentTime() >= sentence.end) {
+          player.pauseVideo();
+          clearInterval(checkTimeInterval);
+        }
+      }, 100); // Kiểm tra liên tục mỗi 0.1 giây
+
+      // Render các ô vuông
+      renderGrid(sentence.cn);
+    }
+
+    function renderGrid(chineseText) {
+      const container = document.getElementById('gridContainer');
+      container.innerHTML = ''; // Xóa grid cũ
+
+      // Lọc bỏ dấu câu tiếng Trung để không vẽ ô vuông cho dấu chấm, phẩy
+      const punctuationRegex = /[，。！？、！?.,]/;
+
+      for (let i = 0; i < chineseText.length; i++) {
+        const char = chineseText[i];
+
+        if (punctuationRegex.test(char)) {
+          // Nếu là dấu câu -> in ra dạng text tĩnh
+          const span = document.createElement('span');
+          span.className = 'punctuation';
+          span.innerText = char;
+          container.appendChild(span);
+        } else {
+          // Nếu là chữ -> tạo ô nhập liệu
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.className = 'char-input';
+          input.maxLength = 1; // Chỉ cho phép nhập 1 ký tự
+          input.dataset.correctChar = char; // Lưu đáp án ngầm vào ô
+          container.appendChild(input);
+        }
+      }
+
+      setupInputJumping();
+    }
+
+    // Hàm xử lý gõ xong tự nhảy ô, bấm backspace tự lùi ô
+    function setupInputJumping() {
+      const inputs = document.querySelectorAll('.char-input');
+      
+      inputs.forEach((input, index) => {
+        // Tự nhảy tiến
+        input.addEventListener('input', (e) => {
+          // Xóa trạng thái đúng sai khi gõ lại
+          input.classList.remove('correct', 'incorrect'); 
+          
+          if (e.target.value && index < inputs.length - 1) {
+            inputs[index + 1].focus();
+          }
+        });
+
+        // Tự nhảy lùi khi xóa
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Backspace' && !e.target.value && index > 0) {
+            inputs[index - 1].focus();
+          }
+        });
+      });
+      
+      // Auto focus ô đầu tiên
+      if(inputs.length > 0) inputs[0].focus();
+    }
+
+    // ==========================================
+    // 4. CHẤM ĐIỂM
+    // ==========================================
+    function checkAnswer() {
+      if (!currentSentenceData) return;
+
+      const inputs = document.querySelectorAll('.char-input');
+      let allCorrect = true;
+
+      inputs.forEach(input => {
+        const userAnswer = input.value.trim();
+        const correctAnswer = input.dataset.correctChar;
+
+        input.classList.remove('correct', 'incorrect');
+
+        if (userAnswer === correctAnswer) {
+          input.classList.add('correct');
+        } else {
+          input.classList.add('incorrect');
+          allCorrect = false;
+        }
+      });
+
+      if (allCorrect) {
+        setTimeout(() => alert("🎉 Xuất sắc! Bác nghe chuẩn không cần chỉnh!"), 100);
+      }
+    }
+  </script>
+</body>
+</html>
