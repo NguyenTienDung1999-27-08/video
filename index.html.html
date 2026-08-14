@@ -207,14 +207,48 @@
     // ==========================================
     // 1. DỮ LIỆU MẪU (JSON)
     // ==========================================
-const lessonData = {
-      // Đã thay bằng video test chuẩn của Google
-      videoId: "M7lc1UVf-VE", 
-      sentences: [
-        { id: 1, start: 1.0, end: 3.5, cn: "你好！", vi: "Xin chào!" },
-        { id: 2, start: 4.0, end: 7.0, cn: "我今天很高兴。", vi: "Hôm nay tôi rất vui." },
-        { id: 3, start: 8.5, end: 12.0, cn: "你喜欢学中文吗？", vi: "Bạn có thích học tiếng Trung không?" }
-      ]
+// ==========================================
+    // 1. DỮ LIỆU BĂM TỰ ĐỘNG TỪ YOUTUBE
+    // ==========================================
+    const lessonData = {
+        "videoId": "M7lc1UVf-VE",
+        "sentences": [
+            {
+                "id": 1,
+                "start": 10.35,
+                "end": 11.35,
+                "cn": "JEFF POSNICK: Hey, everybody.",
+                "vi": "..."
+            },
+            {
+                "id": 2,
+                "start": 11.35,
+                "end": 14.03,
+                "cn": "Welcome to this week's show of YouTube Developers Live.",
+                "vi": "..."
+            },
+            {
+                "id": 3,
+                "start": 14.03,
+                "end": 16.18,
+                "cn": "I'm Jeff Posnick coming to you from New York City.",
+                "vi": "..."
+            },
+            {
+                "id": 4,
+                "start": 16.18,
+                "end": 19.42,
+                "cn": "I'm a member of the Developer Relations team.",
+                "vi": "..."
+            },
+            {
+                "id": 5,
+                "start": 19.42,
+                "end": 21.49,
+                "cn": "And this week I'm really excited to talk to you about",
+                "vi": "..."
+            }
+        ]
     };
     let player;
     let checkTimeInterval;
