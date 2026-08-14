@@ -207,16 +207,15 @@
     // ==========================================
     // 1. DỮ LIỆU MẪU (JSON)
     // ==========================================
-    const lessonData = {
-      // Bác có thể thay videoId bằng bất kỳ link YouTube nào
-      videoId: "mD2C6R0Puy8", 
+const lessonData = {
+      // Đã thay bằng video test chuẩn của Google
+      videoId: "M7lc1UVf-VE", 
       sentences: [
         { id: 1, start: 1.0, end: 3.5, cn: "你好！", vi: "Xin chào!" },
         { id: 2, start: 4.0, end: 7.0, cn: "我今天很高兴。", vi: "Hôm nay tôi rất vui." },
         { id: 3, start: 8.5, end: 12.0, cn: "你喜欢学中文吗？", vi: "Bạn có thích học tiếng Trung không?" }
       ]
     };
-
     let player;
     let checkTimeInterval;
     let currentSentenceData = null;
