@@ -1,97 +1,3 @@
-Văn bản đã dán (1)(10).txt
-Tài liệu
-bạn có thể làm được giao diện đẹp hơn không
-
-
-Có. Nhìn code hiện tại của bạn, giao diện đang khá sạch nhưng vẫn hơi giống “form học tập” truyền thống. Phần khung chính, danh sách câu, ô nhập chữ và thanh điều khiển có thể làm hiện đại hơn nhiều, trong khi giữ nguyên toàn bộ logic YouTube + nghe từng câu + chép tiếng Trung hiện tại.
-
-Tôi đề xuất đổi theo kiểu app học tiếng Trung hiện đại, ví dụ:
-
-Sidebar tối/gradient nhẹ, có số thứ tự và trạng thái câu.
-Phần video nổi bật hơn, bo góc lớn, có lớp thông tin “Câu đang luyện”.
-Khu nhập chữ thành một card luyện tập riêng, nhìn giống Duolingo/HelloChinese hơn.
-Ô chữ Hán lớn hơn, hiệu ứng focus đẹp, đúng/sai có animation.
-Nút ⏮ 🔁 ⏭ thành các nút tròn hiện đại, có tooltip.
-Thêm tiến độ 3 / 12 + thanh progress.
-Câu đang chọn có indicator rõ ràng thay vì chỉ đổi màu nút. Hiện tại code của bạn mới chủ yếu dùng .active để đổi nền và dịch nút sang phải.
-Có khu hiển thị “Nghe → Gõ → Kiểm tra”, tạo cảm giác giống một ứng dụng học thật.
-Có dark mode.
-Không làm trang cuộn; vẫn giữ layout full màn hình như code hiện tại.
-
-Đặc biệt, tôi sẽ không đụng vào lessonData và logic phát video của bạn; phần đó hiện đang hoạt động theo start/end của từng câu và render từng ô chữ Hán.
-
-Nếu làm lại, tôi có thể biến nó thành kiểu giao diện này:
-
-┌─────────────────────────────────────────────────────────────────────┐
-│  🎧 Chinese Listening Lab                         3 / 12   █████░░ │
-├───────────────┬─────────────────────────────────────────────────────┤
-│               │                                                     │
-│  BÀI HỌC      │                  VIDEO YOUTUBE                     │
-│               │                                                     │
-│ ● Câu 1       │                                                     │
-│ ✓ Câu 2       │                                                     │
-│ ● Câu 3       │                                                     │
-│   Câu 4       │                                                     │
-│   Câu 5       │                                                     │
-│   ...         │                                                     │
-│               ├─────────────────────────────────────────────────────┤
-│               │              Nghe và điền câu                       │
-│               │        Bạn là người nước nào?                       │
-│               │                                                     │
-│               │       [你] [是] [哪] [国] [人] [?]                  │
-│               │                                                     │
-│               │       ◀    🔄    ▶                                 │
-└───────────────┴─────────────────────────────────────────────────────┘
-
-Tôi có thể sửa trực tiếp file HTML bạn vừa gửi và trả lại cho bạn một file hoàn chỉnh, giữ nguyên dữ liệu 12 câu hiện tại nhưng làm giao diện đẹp hơn hẳn.
-
-nhưng mà cái nút kia bạn mà đặt bên dưới liệu mình có phải cuộn xuống để next ko, chứ tôi ko muốn cuộn
-
-Không. Tôi hiểu ý bạn: toàn bộ giao diện phải nằm gọn trong màn hình, không được xuất hiện thanh cuộn dọc, và nút ◀ 🔄 ▶ phải luôn nằm trong vùng nhìn thấy để bạn bấm Next ngay.
-
-Code hiện tại của bạn thực ra đã có overflow: hidden cho body, đồng thời layout dùng height: calc(100vh - 70px) nên hướng này là đúng.
-
-Tôi sẽ giữ nguyên nguyên tắc:
-
-┌────────────────────────────────────────────────────────────┐
-│                     TIÊU ĐỀ                                │
-├──────────────┬─────────────────────────────────────────────┤
-│ DANH SÁCH    │                                             │
-│ CÂU          │               VIDEO                         │
-│              │                                             │
-│ Câu 1        │                                             │
-│ Câu 2        │                                             │
-│ Câu 3        │                                             │
-│ Câu 4        │                                             │
-│ ...          │                                             │
-│              ├─────────────────────────────────────────────┤
-│              │ Gợi ý: ...                                  │
-│              │                                             │
-│              │ [你] [是] [哪] [国] [人]                    │
-│              │                                             │
-│              │       ◀    🔄    ▶                         │
-└──────────────┴─────────────────────────────────────────────┘
-                         ↑
-                  luôn nhìn thấy
-
-Quan trọng là tôi sẽ không đặt nút Next ở dưới một khu vực có thể đẩy nó ra ngoài màn hình. Phần video sẽ tự co giãn theo chiều cao còn lại, còn phần luyện chữ + nút điều khiển có chiều cao cố định.
-
-Và danh sách câu bên trái được phép cuộn riêng, nhưng trang chính không cuộn. Như vậy bạn có thể có 50–100 câu mà vẫn không làm mất nút Next. Cách hiện tại của bạn cũng đang dùng .sentence-list { overflow-y: auto; }, nên chỉ danh sách câu có thể cuộn.
-
-Tôi sẽ làm theo kiểu này: màn hình chính cố định 100vh, không scroll; sidebar scroll riêng; nút Prev/Replay/Next luôn cố định trong viewport.
-
-ok thử xem giao diện đẹp vào
-
-Xong rồi. Tôi đã làm lại giao diện theo đúng yêu cầu không cuộn trang chính, chỉ danh sách câu bên trái có thể cuộn riêng. Nút ⏮ ↻ ⏭ luôn nằm trong vùng nhìn thấy.
-
-File HTML mới đây:
-
-📥 Tải giao diện Chinese Listening Lab
-
-Tôi cũng đã kiểm tra HTML và cấu trúc layout: body bị khóa scroll, sidebar có scroll riêng, còn khu video + khu nhập chữ dùng layout co giãn theo chiều cao màn hình.
-
-Lưu ý: tôi chưa tạo được ảnh preview tự động trong môi trường này vì trình duyệt headless chưa được cài sẵn, nhưng file HTML đã được kiểm tra cú pháp.
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -100,7 +6,7 @@ Lưu ý: tôi chưa tạo được ảnh preview tự động trong môi trườ
   <title>Nghe Chép Chính Tả (Pro Version)</title>
   <style>
 :root{--bg:#0f1720;--panel:#151f2b;--card:#f8fafc;--ink:#17212b;--muted:#748091;--line:#dbe3ea;--accent:#3f7f72;--accent-2:#64b5a3;--accent-soft:#e5f3ef;--wrong:#d65353;--wrong-bg:#fff0f0;--shadow:0 18px 50px rgba(15,23,32,.16)}
-*{box-sizing:border-box}html,body{width:100%;height:100%;margin:0}body{font-family:Inter,"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;background:radial-gradient(circle at 10% 10%,rgba(100,181,163,.11),transparent 28%),radial-gradient(circle at 95% 90%,rgba(214,169,77,.09),transparent 24%),var(--bg);color:#fff;padding:14px;overflow:hidden}.app-shell{height:calc(100vh - 28px);display:flex;flex-direction:column;gap:12px;min-height:0}.topbar{flex:0 0 58px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 18px 0 20px;border:1px solid rgba(255,255,255,.08);background:rgba(21,31,43,.88);backdrop-filter:blur(16px);border-radius:18px;box-shadow:0 10px 35px rgba(0,0,0,.12)}.brand{display:flex;align-items:center;gap:11px;min-width:0}.brand-icon{width:36px;height:36px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),#5a9d8e);box-shadow:0 7px 18px rgba(63,127,114,.32);font-size:19px}.brand-title{font-size:16px;font-weight:800;letter-spacing:.2px}.brand-sub{font-size:11px;color:#9eabb9;margin-top:2px}.progress-wrap{width:min(420px,42vw);display:flex;flex-direction:column;gap:6px}.progress-meta{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#aab5c1}.progress-meta strong{color:#fff;font-size:12px}.progress{height:7px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:inherit;transition:width .25s ease}.app-layout{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:290px minmax(0,1fr);gap:12px}.sidebar{min-height:0;display:flex;flex-direction:column;overflow:hidden;background:rgba(21,31,43,.96);border:1px solid rgba(255,255,255,.07);border-radius:18px;box-shadow:var(--shadow)}.sidebar-head{padding:17px 17px 13px;border-bottom:1px solid rgba(255,255,255,.07)}.sidebar-title{display:flex;justify-content:space-between;align-items:center;gap:10p
+*{box-sizing:border-box}html,body{width:100%;height:100%;margin:0}body{font-family:Inter,"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;background:radial-gradient(circle at 10% 10%,rgba(100,181,163,.11),transparent 28%),radial-gradient(circle at 95% 90%,rgba(214,169,77,.09),transparent 24%),var(--bg);color:#fff;padding:14px;overflow:hidden}.app-shell{height:calc(100vh - 28px);display:flex;flex-direction:column;gap:12px;min-height:0}.topbar{flex:0 0 58px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 18px 0 20px;border:1px solid rgba(255,255,255,.08);background:rgba(21,31,43,.88);backdrop-filter:blur(16px);border-radius:18px;box-shadow:0 10px 35px rgba(0,0,0,.12)}.brand{display:flex;align-items:center;gap:11px;min-width:0}.brand-icon{width:36px;height:36px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),#5a9d8e);box-shadow:0 7px 18px rgba(63,127,114,.32);font-size:19px}.brand-title{font-size:16px;font-weight:800;letter-spacing:.2px}.brand-sub{font-size:11px;color:#9eabb9;margin-top:2px}.progress-wrap{width:min(420px,42vw);display:flex;flex-direction:column;gap:6px}.progress-meta{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#aab5c1}.progress-meta strong{color:#fff;font-size:12px}.progress{height:7px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:inherit;transition:width .25s ease}.app-layout{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:290px minmax(0,1fr);gap:12px}.sidebar{min-height:0;display:flex;flex-direction:column;overflow:hidden;background:rgba(21,31,43,.96);border:1px solid rgba(255,255,255,.07);border-radius:18px;box-shadow:var(--shadow)}.sidebar-head{padding:17px 17px 13px;border-bottom:1px solid rgba(255,255,255,.07)}.sidebar-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.sidebar-title h2{margin:0;font-size:14px}.count-badge{padding:4px 8px;border-radius:999px;background:rgba(100,181,163,.12);color:#8fd5c5;font-size:10px;font-weight:800}.sidebar-note{margin-top:6px;color:#7f8b98;font-size:10px}.sentence-list{flex:1;min-height:0;overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:7px;scrollbar-width:thin;scrollbar-color:#3a4653 transparent}.sentence-list::-webkit-scrollbar{width:6px}.sentence-list::-webkit-scrollbar-thumb{background:#3a4653;border-radius:99px}.btn-play-sentence{position:relative;flex:0 0 46px;width:100%;border:1px solid rgba(255,255,255,.06);border-radius:12px;background:#182331;color:#c6d0da;padding:0 12px 0 14px;text-align:left;font-size:12px;font-weight:650;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:.18s ease}.btn-play-sentence:before{content:"";width:4px;height:18px;border-radius:4px;background:transparent;position:absolute;left:0;top:14px}.btn-play-sentence:hover{background:#203041;color:#fff;transform:translateX(2px)}.btn-play-sentence.active{background:linear-gradient(90deg,rgba(63,127,114,.25),rgba(63,127,114,.08));color:#fff;border-color:rgba(100,181,163,.28)}.btn-play-sentence.active:before{background:var(--accent-2)}.main-content{min-width:0;min-height:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:12px}.video-card{position:relative;min-height:0;overflow:hidden;border-radius:18px;background:#000;border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)}.video-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.video-label{position:absolute;z-index:2;left:14px;top:14px;padding:7px 10px;border-radius:10px;background:rgba(12,18,25,.72);backdrop-filter:blur(10px);color:#fff;font-size:11px;font-weight:700;border:1px solid rgba(255,255,255,.09);pointer-events:none}.interaction-area{flex:0 0 auto;min-height:142px;border-radius:18px;background:var(--card);color:var(--ink);padding:14px 18px 15px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.6)}.practice-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.practice-title{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;color:#566170}.status-pill{padding:5px 9px;border-radius:999px;font-size:10px;font-weight:800;background:#eef2f5;color:#7a8592}.status-pill.success{color:var(--accent);background:var(--accent-soft)}.vietnamese-hint{font-size:13px;color:#66717e;text-align:center;margin:0 0 10px;min-height:18px;font-style:normal}.action-row{display:grid;grid-template-columns:150px minmax(0,1fr) 150px;align-items:center;gap:12px}.controls-bar{display:flex;gap:7px;align-items:center;justify-content:flex-start}.btn-control{width:38px;height:38px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#4f5b68;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:.18s ease;box-shadow:0 4px 10px rgba(23,33,43,.04)}.btn-control:hover{transform:translateY(-1px);border-color:#a9c9c2;background:#f5fbf9;color:var(--accent)}.btn-control.replay{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 7px 16px rgba(63,127,114,.2)}.btn-control:disabled{opacity:.38;cursor:not-allowed;transform:none}.grid-container{display:flex;justify-content:center;align-items:center;gap:7px;flex-wrap:nowrap;min-width:0;overflow:hidden}.char-input{width:42px;height:48px;flex:0 0 42px;font-size:23px;text-align:center;border:1.5px solid var(--line);border-radius:11px;background:#fff;font-weight:750;color:var(--ink);transition:.16s ease;box-shadow:0 3px 8px rgba(22,34,45,.035)}.char-input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(63,127,114,.12);transform:translateY(-1px)}.char-input.correct{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}.char-input.incorrect{border-color:var(--wrong);background:var(--wrong-bg);color:var(--wrong)}.punctuation{display:flex;align-items:center;font-size:24px;color:#77818d}.shortcut{text-align:right;font-size:9px;color:#99a3ae;line-height:1.5}.shortcut b{color:#66727f}@media(max-width:900px){.app-layout{grid-template-columns:230px minmax(0,1fr)}.action-row{grid-template-columns:115px minmax(0,1fr)}.shortcut{display:none}.grid-container{gap:5px}.char-input{width:37px;flex-basis:37px;height:44px;font-size:21px}}
   </style>
 </head>
 <body>
@@ -126,11 +32,183 @@ Lưu ý: tôi chưa tạo được ảnh preview tự động trong môi trườ
     </div>
   </div>
 
-
   <script src="https://www.youtube.com/iframe_api"></script>
 
+  <script>
+    const lessonData = {
+        "videoId": "Mm2z0UcKMrg",
+        "sentences": [
+            { "id": 1, "start": 11.4, "end": 12.3, "cn": "我是學生", "vi": "Tôi là học sinh." },
+            { "id": 2, "start": 14.4, "end": 15.2, "cn": "我是學生", "vi": "Tôi là học sinh." },
+            { "id": 3, "start": 22.1, "end": 23.6, "cn": "我不是中国人", "vi": "Tôi không phải là người Trung Quốc." },
+            { "id": 4, "start": 25.7, "end": 26.9, "cn": "我不是中国人", "vi": "Tôi không phải là người Trung Quốc." },
+            { "id": 5, "start": 33.7, "end": 34.9, "cn": "你是哪国人?", "vi": "Bạn là người nước nào?" },
+            { "id": 6, "start": 37.0, "end": 37.8, "cn": "你是哪国人", "vi": "Bạn là người nước nào?" },
+            { "id": 7, "start": 44.5, "end": 45.8, "cn": "这是我的朋友", "vi": "Đây là bạn của tôi." },
+            { "id": 8, "start": 47.9, "end": 48.9, "cn": "這是我的朋友", "vi": "Đây là bạn của tôi." },
+            { "id": 9, "start": 55.9, "end": 57.2, "cn": "她是我的老師", "vi": "Cô ấy là giáo viên của tôi." },
+            { "id": 10, "start": 59.3, "end": 60.4, "cn": "他是我的老師", "vi": "Anh ấy là giáo viên của tôi." },
+            { "id": 11, "start": 66.9, "end": 68.3, "cn": "你叫什么名字?", "vi": "Bạn tên là gì?" },
+            { "id": 12, "start": 70.3, "end": 71.3, "cn": "你叫什么名字", "vi": "Bạn tên là gì?" }
+        ]
+    };
 
-chinese_listening_beautiful.html
-HTML
+    let player;
+    let checkTimeInterval;
+    let currentIndex = -1; 
 
-17:34:25 query returned open=false
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('ytplayer', {
+        height: '100%', width: '100%', videoId: lessonData.videoId,
+        playerVars: { 'playsinline': 1, 'controls': 1, 'rel': 0 }
+      });
+      initUI();
+    }
+
+    function initUI() {
+      const listContainer = document.getElementById('sentenceList');
+      
+      lessonData.sentences.forEach((sentence, index) => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-play-sentence';
+        btn.id = `btn-sentence-${index}`;
+        btn.innerText = `Câu ${sentence.id}: ${sentence.vi}`;
+        btn.onclick = () => playSentence(index);
+        listContainer.appendChild(btn);
+      });
+
+      document.getElementById('btnPrev').onclick = () => playSentence(currentIndex - 1);
+      document.getElementById('btnNext').onclick = () => playSentence(currentIndex + 1);
+      document.getElementById('btnReplay').onclick = () => playSentence(currentIndex);
+    }
+
+    function updateProgress() {
+      const total = lessonData.sentences.length;
+      const done = currentIndex < 0 ? 0 : currentIndex + 1;
+      document.getElementById('progressText').innerText = `${done} / ${total}`;
+      document.getElementById('progressBar').style.width = `${total ? done / total * 100 : 0}%`;
+    }
+
+    function playSentence(index) {
+      if (index < 0 || index >= lessonData.sentences.length) return;
+      
+      currentIndex = index;
+      const sentence = lessonData.sentences[index];
+      updateProgress();
+      document.getElementById('videoLabel').innerText = `Câu ${sentence.id}`;
+      document.getElementById('statusPill').innerText = 'Đang luyện';
+      document.getElementById('statusPill').classList.remove('success');
+
+      document.querySelectorAll('.btn-play-sentence').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById(`btn-sentence-${index}`);
+      activeBtn.classList.add('active');
+      activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); 
+
+      document.getElementById('inputArea').style.display = 'flex';
+      document.getElementById('viHint').innerText = "Gợi ý: " + sentence.vi;
+
+      document.getElementById('btnPrev').disabled = (currentIndex === 0);
+      document.getElementById('btnNext').disabled = (currentIndex === lessonData.sentences.length - 1);
+
+      player.seekTo(sentence.start);
+      player.playVideo();
+
+      clearInterval(checkTimeInterval);
+      checkTimeInterval = setInterval(() => {
+        if (player.getCurrentTime() >= sentence.end) {
+          player.pauseVideo();
+          clearInterval(checkTimeInterval);
+        }
+      }, 100);
+
+      renderGrid(sentence.cn);
+    }
+
+    function renderGrid(chineseText) {
+      const container = document.getElementById('gridContainer');
+      container.innerHTML = ''; 
+      const punctuationRegex = /[，。！？、！?.,\s]/;
+
+      for (let i = 0; i < chineseText.length; i++) {
+        const char = chineseText[i];
+        if (punctuationRegex.test(char)) {
+          const span = document.createElement('span');
+          span.className = 'punctuation';
+          span.innerText = char;
+          container.appendChild(span);
+        } else {
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.className = 'char-input';
+          input.maxLength = 1;
+          input.dataset.correctChar = char; 
+          container.appendChild(input);
+        }
+      }
+      setupInputJumping();
+    }
+
+    function setupInputJumping() {
+      const inputs = document.querySelectorAll('.char-input');
+      inputs.forEach((input, index) => {
+        input.addEventListener('input', (e) => {
+          input.classList.remove('correct', 'incorrect'); 
+          if (e.target.value && index < inputs.length - 1) inputs[index + 1].focus();
+        });
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Backspace' && !e.target.value && index > 0) inputs[index - 1].focus();
+          if (e.key === 'Enter') checkAnswer();
+        });
+      });
+      if(inputs.length > 0) inputs[0].focus();
+    }
+
+    function checkAnswer() {
+      const inputs = document.querySelectorAll('.char-input');
+      let allCorrect = true;
+      inputs.forEach(input => {
+        const userAnswer = input.value.trim();
+        const correctAnswer = input.dataset.correctChar;
+        input.classList.remove('correct', 'incorrect');
+        if (userAnswer === correctAnswer) {
+          input.classList.add('correct');
+        } else {
+          input.classList.add('incorrect');
+          allCorrect = false;
+        }
+      });
+      if (allCorrect) {
+        document.getElementById('statusPill').innerText = '✓ Chính xác';
+        document.getElementById('statusPill').classList.add('success');
+        setTimeout(() => alert("🎉 Quá chuẩn! Chuyển sang câu tiếp theo thôi!"), 100);
+      } else {
+        document.getElementById('statusPill').innerText = 'Còn chữ chưa đúng';
+        document.getElementById('statusPill').classList.remove('success');
+      }
+    }
+
+    // TÍCH HỢP PHÍM TẮT VẬT LÝ
+    document.addEventListener('keydown', (e) => {
+      // Bỏ qua nếu đang gõ chữ vào input (tránh conflict phím mũi tên)
+      const isInputActive = document.activeElement && document.activeElement.tagName === 'INPUT';
+      
+      // Next: Nút Media Next, PageDown, hoặc Ctrl + Mũi tên phải
+      if (e.key === 'MediaTrackNext' || e.key === 'PageDown' || (e.ctrlKey && e.key === 'ArrowRight')) {
+        e.preventDefault();
+        document.getElementById('btnNext').click();
+      }
+      // Prev: Nút Media Prev, PageUp, hoặc Ctrl + Mũi tên trái
+      if (e.key === 'MediaTrackPrevious' || e.key === 'PageUp' || (e.ctrlKey && e.key === 'ArrowLeft')) {
+        e.preventDefault();
+        document.getElementById('btnPrev').click();
+      }
+      // Replay: Ctrl + Space
+      if (e.ctrlKey && e.key === ' ') {
+        e.preventDefault();
+        document.getElementById('btnReplay').click();
+      }
+    });
+
+  </script>
+</body>
+</html>
