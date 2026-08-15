@@ -32,24 +32,24 @@
       text-align: center;
       color: var(--jade);
       margin-top: 0;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
     /* BỐ CỤC 2 CỘT */
     .app-layout {
       display: flex;
-      gap: 24px;
+      gap: 30px; /* Tăng khoảng cách giữa 2 cột cho thoáng */
       max-width: 1200px;
       margin: 0 auto;
-      height: calc(100vh - 100px); /* Trừ đi phần tiêu đề */
+      height: calc(100vh - 120px);
     }
 
     /* CỘT TRÁI: DANH SÁCH CÂU */
     .sidebar {
-      flex: 0 0 280px; /* Cột trái rộng cố định 280px */
+      flex: 0 0 280px;
       background: #fff;
       border-radius: 20px;
-      padding: 20px;
+      padding: 24px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.05);
       display: flex;
       flex-direction: column;
@@ -60,26 +60,26 @@
       font-size: 18px;
       color: var(--jade);
       border-bottom: 2px solid var(--jade-soft);
-      padding-bottom: 10px;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
     }
 
     .sentence-list {
       flex: 1;
-      overflow-y: auto; /* Thanh cuộn dọc */
+      overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px; /* Tăng khoảng cách các nút câu hỏi */
       padding-right: 10px;
     }
 
-    /* Tùy chỉnh thanh cuộn cho đẹp */
     .sentence-list::-webkit-scrollbar { width: 6px; }
     .sentence-list::-webkit-scrollbar-thumb { background-color: var(--line); border-radius: 10px; }
 
     .btn-play-sentence {
       background: var(--paper-deep);
       border: 1px solid var(--line);
-      padding: 12px 16px;
+      padding: 14px 16px;
       border-radius: 12px;
       font-weight: bold;
       color: var(--ink);
@@ -102,7 +102,7 @@
       min-width: 0;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 30px; /* Nới rộng khoảng cách giữa video và phần điền chữ */
     }
 
     .video-wrapper {
@@ -122,35 +122,83 @@
       border: none;
     }
 
-    /* KHU VỰC TƯƠNG TÁC */
+    /* KHU VỰC TƯƠNG TÁC (TỐI ƯU MỚI) */
     .interaction-area {
       background: #fff;
       border-radius: 20px;
-      padding: 24px;
+      padding: 30px; /* Tăng độ thở cho viền */
       box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
     }
 
     .vietnamese-hint {
       font-size: 18px;
       color: var(--ink-soft);
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       font-style: italic;
+      text-align: center;
     }
 
+    /* Bọc cả Điều hướng và Ô chữ trên cùng 1 hàng ngang */
+    .action-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px; /* Khoảng cách giữa nút bấm và ô chữ */
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    /* THANH ĐIỀU HƯỚNG BÊN TRÁI */
+    .controls-bar {
+      display: flex;
+      gap: 12px;
+    }
+
+    /* Biến nút thành hình tròn nhỏ gọn giống media player */
+    .btn-control {
+      background: var(--paper-deep);
+      border: 2px solid var(--line);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      font-size: 18px;
+      color: var(--ink);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s;
+    }
+
+    .btn-control:hover { 
+      background: var(--jade-soft); 
+      color: var(--jade); 
+      border-color: var(--jade); 
+      transform: scale(1.05);
+    }
+    .btn-control:disabled { 
+      opacity: 0.4; 
+      cursor: not-allowed; 
+      transform: none; 
+      background: var(--paper-deep);
+      border-color: var(--line);
+    }
+
+    /* Ô ĐIỀN CHỮ BÊN PHẢI */
     .grid-container {
       display: flex;
       justify-content: center;
-      gap: 8px;
+      gap: 12px; /* Tăng khoảng cách giữa các ô vuông */
       flex-wrap: wrap;
-      margin-bottom: 24px;
     }
 
     .char-input {
-      width: 50px; height: 60px;
+      width: 55px; /* Làm ô to ra một chút */
+      height: 65px;
       font-size: 32px;
       text-align: center;
       border: 2px solid var(--line);
@@ -159,9 +207,14 @@
       font-weight: bold;
       color: var(--ink);
       transition: 0.2s;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
     }
 
-    .char-input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px rgba(201,162,75,0.15); }
+    .char-input:focus { 
+      outline: none; 
+      border-color: var(--gold); 
+      box-shadow: 0 0 0 4px rgba(201,162,75,0.15); 
+    }
     .char-input.correct { border-color: var(--jade); background: var(--jade-soft); color: var(--jade); }
     .char-input.incorrect { border-color: var(--wrong); background: var(--wrong-bg); color: var(--wrong); }
 
@@ -169,47 +222,10 @@
       display: flex; align-items: flex-end; font-size: 32px; padding-bottom: 5px; color: var(--ink-soft);
     }
 
-    /* THANH ĐIỀU HƯỚNG NEXT/PREV */
-    .controls-bar {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 20px;
-      width: 100%;
-    }
-
-    .btn-control {
-      background: var(--paper-deep);
-      border: 1px solid var(--line);
-      padding: 10px 20px;
-      border-radius: 12px;
-      font-weight: bold;
-      color: var(--ink);
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .btn-control:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
-    .btn-control:disabled { opacity: 0.5; cursor: not-allowed; background: var(--line); color: var(--ink-soft); }
-
-    .btn-check {
-      background: var(--jade);
-      color: #fff;
-      border: none;
-      padding: 14px 40px;
-      font-size: 16px;
-      font-weight: bold;
-      border-radius: 99px;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(47,93,85,0.3);
-      transition: 0.2s;
-    }
-    .btn-check:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(47,93,85,0.4); }
-
-    /* Responsive cho điện thoại */
     @media (max-width: 768px) {
       .app-layout { flex-direction: column-reverse; height: auto; }
       .sidebar { flex: auto; height: 400px; }
+      .action-row { flex-direction: column-reverse; gap: 20px; }
     }
   </style>
 </head>
@@ -218,15 +234,11 @@
   <h1>🎧 Nghe Chép Chính Tả (Pro Version)</h1>
 
   <div class="app-layout">
-    <!-- CỘT TRÁI: DANH SÁCH -->
     <aside class="sidebar">
       <h2>📚 Danh sách câu</h2>
-      <div class="sentence-list" id="sentenceList">
-        <!-- Nút sẽ được sinh ra bằng Javascript -->
-      </div>
+      <div class="sentence-list" id="sentenceList"></div>
     </aside>
 
-    <!-- CỘT PHẢI: VIDEO & TƯƠNG TÁC -->
     <main class="main-content">
       <div class="video-wrapper">
         <div id="ytplayer"></div>
@@ -235,16 +247,17 @@
       <div class="interaction-area" id="inputArea" style="display: none;">
         <div class="vietnamese-hint" id="viHint">Bấm chọn câu bên trái để bắt đầu...</div>
         
-        <div class="grid-container" id="gridContainer"></div>
-        
-        <!-- Thanh điều hướng Next/Prev -->
-        <div class="controls-bar">
-          <button id="btnPrev" class="btn-control">⏪ </button>
-          <button id="btnReplay" class="btn-control">🔄 </button>
-          <button id="btnNext" class="btn-control"> ⏩</button>
+        <!-- Bọc Điều hướng và Khung điền chữ chung một hàng -->
+        <div class="action-row">
+          <div class="controls-bar">
+            <button id="btnPrev" class="btn-control" title="Câu trước">⏮</button>
+            <button id="btnReplay" class="btn-control" title="Nghe lại">🔁</button>
+            <button id="btnNext" class="btn-control" title="Câu tiếp">⏭</button>
+          </div>
+          
+          <div class="grid-container" id="gridContainer"></div>
         </div>
 
-        <button class="btn-check" id="btnCheck">✅ Kiểm tra đáp án</button>
       </div>
     </main>
   </div>
@@ -282,7 +295,7 @@
 
     let player;
     let checkTimeInterval;
-    let currentIndex = -1; // Theo dõi chỉ số câu đang học
+    let currentIndex = -1; 
 
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('ytplayer', {
@@ -304,11 +317,9 @@
         listContainer.appendChild(btn);
       });
 
-      // Gán sự kiện cho các nút điều hướng
       document.getElementById('btnPrev').onclick = () => playSentence(currentIndex - 1);
       document.getElementById('btnNext').onclick = () => playSentence(currentIndex + 1);
       document.getElementById('btnReplay').onclick = () => playSentence(currentIndex);
-      document.getElementById('btnCheck').onclick = checkAnswer;
     }
 
     function playSentence(index) {
@@ -317,21 +328,17 @@
       currentIndex = index;
       const sentence = lessonData.sentences[index];
 
-      // Đổi màu nút sidebar
       document.querySelectorAll('.btn-play-sentence').forEach(b => b.classList.remove('active'));
       const activeBtn = document.getElementById(`btn-sentence-${index}`);
       activeBtn.classList.add('active');
-      activeBtn.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Tự cuộn thanh bên trái
+      activeBtn.scrollIntoView({ behavior: 'smooth', block: 'center' }); 
 
-      // Cập nhật giao diện
       document.getElementById('inputArea').style.display = 'flex';
       document.getElementById('viHint').innerText = "Gợi ý: " + sentence.vi;
 
-      // Xử lý nút Prev/Next
       document.getElementById('btnPrev').disabled = (currentIndex === 0);
       document.getElementById('btnNext').disabled = (currentIndex === lessonData.sentences.length - 1);
 
-      // Phát video
       player.seekTo(sentence.start);
       player.playVideo();
 
@@ -380,7 +387,8 @@
         });
         input.addEventListener('keydown', (e) => {
           if (e.key === 'Backspace' && !e.target.value && index > 0) inputs[index - 1].focus();
-          if (e.key === 'Enter') checkAnswer(); // Phím tắt kiểm tra
+          // Kiểm tra tự động bằng nút Enter
+          if (e.key === 'Enter') checkAnswer();
         });
       });
       if(inputs.length > 0) inputs[0].focus();
@@ -401,7 +409,7 @@
         }
       });
       if (allCorrect) {
-        setTimeout(() => alert("🎉 Xuất sắc! Bác nghe chuẩn không cần chỉnh!"), 100);
+        setTimeout(() => alert("🎉 Quá chuẩn! Chuyển sang câu tiếp theo thôi!"), 100);
       }
     }
   </script>
