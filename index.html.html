@@ -205,160 +205,33 @@
 
   <script>
     // ==========================================
-    // 1. DỮ LIỆU MẪU (JSON)
-    // ==========================================
-// ==========================================
     // 1. DỮ LIỆU BĂM TỰ ĐỘNG TỪ YOUTUBE
     // ==========================================
-const lessonData = {
-    "videoId": "Mm2z0UcKMrg",
-    "sentences": [
-        {
-            "id": 1,
-            "start": 11.0,
-            "end": 17.0,
-            "cn": "我是学生。",
-            "vi": "Tôi là học sinh."
-        },
-        {
-            "id": 2,
-            "start": 18.0,
-            "end": 27.0,
-            "cn": "我不是中国人。",
-            "vi": "Tôi không phải là người Trung Quốc."
-        },
-        {
-            "id": 3,
-            "start": 30.0,
-            "end": 37.0,
-            "cn": "他是哪国人？",
-            "vi": "Anh ấy là người nước nào?"
-        },
-        {
-            "id": 4,
-            "start": 38.0,
-            "end": 45.0,
-            "cn": "这是我的朋友。",
-            "vi": "Đây là bạn của tôi."
-        },
-        {
-            "id": 5,
-            "start": 46.0,
-            "end": 54.0,
-            "cn": "他是我的老师。",
-            "vi": "Anh ấy là giáo viên của tôi."
-        },
-        {
-            "id": 6,
-            "start": 65.0,
-            "end": 73.0,
-            "cn": "你叫什么名字？",
-            "vi": "Bạn tên là gì?"
-        },
-        {
-            "id": 7,
-            "start": 74.0,
-            "end": 82.0,
-            "cn": "我叫李明。",
-            "vi": "Tôi tên là Lý Minh."
-        },
-        {
-            "id": 8,
-            "start": 83.0,
-            "end": 91.0,
-            "cn": "很高兴认识你。",
-            "vi": "Rất vui được làm quen với bạn."
-        },
-        {
-            "id": 9,
-            "start": 94.0,
-            "end": 102.0,
-            "cn": "今天天气很好。",
-            "vi": "Thời tiết hôm nay rất tốt."
-        },
-        {
-            "id": 10,
-            "start": 112.0,
-            "end": 119.0,
-            "cn": "我想喝水。",
-            "vi": "Tôi muốn uống nước."
-        },
-        {
-            "id": 11,
-            "start": 120.0,
-            "end": 129.0,
-            "cn": "我喜欢吃米饭。",
-            "vi": "Tôi thích ăn cơm."
-        },
-        {
-            "id": 12,
-            "start": 130.0,
-            "end": 139.0,
-            "cn": "我不喜欢喝咖啡。",
-            "vi": "Tôi không thích uống cà phê."
-        },
-        {
-            "id": 13,
-            "start": 144.0,
-            "end": 153.0,
-            "cn": "我家有四口人。",
-            "vi": "Nhà tôi có bốn người."
-        },
-        {
-            "id": 14,
-            "start": 168.0,
-            "end": 177.0,
-            "cn": "现在几点？",
-            "vi": "Bây giờ là mấy giờ?"
-        },
-        {
-            "id": 15,
-            "start": 185.0,
-            "end": 195.0,
-            "cn": "我每天早上七点起床。",
-            "vi": "Tôi thức dậy lúc 7 giờ mỗi sáng."
-        },
-        {
-            "id": 16,
-            "start": 203.0,
-            "end": 213.0,
-            "cn": "我晚上十点睡觉。",
-            "vi": "Tôi đi ngủ lúc 10 giờ tối."
-        },
-        {
-            "id": 17,
-            "start": 215.0,
-            "end": 223.0,
-            "cn": "我在家。",
-            "vi": "Tôi ở nhà."
-        },
-        {
-            "id": 18,
-            "start": 225.0,
-            "end": 234.0,
-            "cn": "他在学校。",
-            "vi": "Anh ấy ở trường."
-        },
-        {
-            "id": 19,
-            "start": 240.0,
-            "end": 247.0,
-            "cn": "我在学习汉语。",
-            "vi": "Tôi đang học tiếng Trung."
-        },
-        {
-            "id": 20,
-            "start": 248.0,
-            "end": 258.0,
-            "cn": "你在做什么？",
-            "vi": "Bạn đang làm gì đấy?"
-        }
-    ]
-};
-
-let player;
-let checkTimeInterval;
-let currentSentenceData = null;
+    const lessonData = {
+        "videoId": "Mm2z0UcKMrg",
+        "sentences": [
+            { "id": 1, "start": 11.0, "end": 17.0, "cn": "我是学生。", "vi": "Tôi là học sinh." },
+            { "id": 2, "start": 18.0, "end": 27.0, "cn": "我不是中国人。", "vi": "Tôi không phải là người Trung Quốc." },
+            { "id": 3, "start": 30.0, "end": 37.0, "cn": "他是哪国人？", "vi": "Anh ấy là người nước nào?" },
+            { "id": 4, "start": 38.0, "end": 45.0, "cn": "这是我的朋友。", "vi": "Đây là bạn của tôi." },
+            { "id": 5, "start": 46.0, "end": 54.0, "cn": "他是我的老师。", "vi": "Anh ấy là giáo viên của tôi." },
+            { "id": 6, "start": 65.0, "end": 73.0, "cn": "你叫什么名字？", "vi": "Bạn tên là gì?" },
+            { "id": 7, "start": 74.0, "end": 82.0, "cn": "我叫李明。", "vi": "Tôi tên là Lý Minh." },
+            { "id": 8, "start": 83.0, "end": 91.0, "cn": "很高兴认识你。", "vi": "Rất vui được làm quen với bạn." },
+            { "id": 9, "start": 94.0, "end": 102.0, "cn": "今天天气很好。", "vi": "Thời tiết hôm nay rất tốt." },
+            { "id": 10, "start": 112.0, "end": 119.0, "cn": "我想喝水。", "vi": "Tôi muốn uống nước." },
+            { "id": 11, "start": 120.0, "end": 129.0, "cn": "我喜欢吃米饭。", "vi": "Tôi thích ăn cơm." },
+            { "id": 12, "start": 130.0, "end": 139.0, "cn": "我不喜欢喝咖啡。", "vi": "Tôi không thích uống cà phê." },
+            { "id": 13, "start": 144.0, "end": 153.0, "cn": "我家有四口人。", "vi": "Nhà tôi có bốn người." },
+            { "id": 14, "start": 168.0, "end": 177.0, "cn": "现在几点？", "vi": "Bây giờ là mấy giờ?" },
+            { "id": 15, "start": 185.0, "end": 195.0, "cn": "我每天早上七点起床。", "vi": "Tôi thức dậy lúc 7 giờ mỗi sáng." },
+            { "id": 16, "start": 203.0, "end": 213.0, "cn": "我晚上十点睡觉。", "vi": "Tôi đi ngủ lúc 10 giờ tối." },
+            { "id": 17, "start": 215.0, "end": 223.0, "cn": "我在家。", "vi": "Tôi ở nhà." },
+            { "id": 18, "start": 225.0, "end": 234.0, "cn": "他在学校。", "vi": "Anh ấy ở trường." },
+            { "id": 19, "start": 240.0, "end": 247.0, "cn": "我在学习汉语。", "vi": "Tôi đang học tiếng Trung." },
+            { "id": 20, "start": 248.0, "end": 258.0, "cn": "你在做什么？", "vi": "Bạn đang làm gì đấy?" }
+        ]
+    };
 
     let player;
     let checkTimeInterval;
