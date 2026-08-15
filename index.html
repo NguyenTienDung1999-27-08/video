@@ -18,50 +18,52 @@
       --wrong-bg: #fdf0ed;
     }
 
+    /* Ép khung không cho cuộn trang */
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
       background-color: var(--paper-deep);
       color: var(--ink);
       margin: 0;
-      padding: 20px;
+      padding: 10px 20px;
       height: 100vh;
       box-sizing: border-box;
+      overflow: hidden; 
     }
 
     h1 {
       text-align: center;
       color: var(--jade);
-      margin-top: 0;
-      margin-bottom: 30px;
+      margin: 5px 0 15px 0;
+      font-size: 24px;
     }
 
-    /* BỐ CỤC 2 CỘT */
+    /* Layout tràn viền, đẩy sang trái */
     .app-layout {
       display: flex;
-      gap: 30px; /* Tăng khoảng cách giữa 2 cột cho thoáng */
-      max-width: 1200px;
-      margin: 0 auto;
-      height: calc(100vh - 120px);
+      gap: 20px;
+      width: 100%;
+      max-width: 100%;
+      height: calc(100vh - 70px);
     }
 
-    /* CỘT TRÁI: DANH SÁCH CÂU */
+    /* CỘT TRÁI: Đã fix nút thẳng hàng */
     .sidebar {
-      flex: 0 0 280px;
+      flex: 0 0 320px;
       background: #fff;
-      border-radius: 20px;
-      padding: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
       display: flex;
       flex-direction: column;
     }
 
     .sidebar h2 {
       margin-top: 0;
-      font-size: 18px;
+      font-size: 16px;
       color: var(--jade);
       border-bottom: 2px solid var(--jade-soft);
-      padding-bottom: 15px;
-      margin-bottom: 15px;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
     }
 
     .sentence-list {
@@ -69,31 +71,40 @@
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 10px; /* Tăng khoảng cách các nút câu hỏi */
-      padding-right: 10px;
+      gap: 8px;
+      padding-right: 5px;
     }
 
-    .sentence-list::-webkit-scrollbar { width: 6px; }
+    .sentence-list::-webkit-scrollbar { width: 5px; }
     .sentence-list::-webkit-scrollbar-thumb { background-color: var(--line); border-radius: 10px; }
 
+    /* Fix cứng kích thước nút, cắt gọn text dư thừa */
     .btn-play-sentence {
       background: var(--paper-deep);
       border: 1px solid var(--line);
-      padding: 14px 16px;
-      border-radius: 12px;
-      font-weight: bold;
+      border-radius: 10px;
+      font-weight: 600;
       color: var(--ink);
       cursor: pointer;
       text-align: left;
       transition: 0.2s;
       font-size: 14px;
+      width: 100%;
+      height: 46px; 
+      padding: 0 15px;
+      line-height: 44px;
+      white-space: nowrap; 
+      overflow: hidden; 
+      text-overflow: ellipsis; 
+      display: block; 
+      box-sizing: border-box;
     }
 
     .btn-play-sentence:hover, .btn-play-sentence.active {
       background: var(--jade);
       color: #fff;
       border-color: var(--jade);
-      transform: translateX(5px);
+      transform: translateX(4px);
     }
 
     /* CỘT PHẢI: VIDEO & ĐIỀN CHỮ */
@@ -102,17 +113,19 @@
       min-width: 0;
       display: flex;
       flex-direction: column;
-      gap: 30px; /* Nới rộng khoảng cách giữa video và phần điền chữ */
+      gap: 15px;
+      height: 100%;
     }
 
+    /* Tự động co giãn theo chiều dọc màn hình */
     .video-wrapper {
+      flex: 1;
+      min-height: 0; 
       position: relative;
-      padding-bottom: 56.25%; 
-      height: 0;
-      overflow: hidden;
-      border-radius: 20px;
+      border-radius: 16px;
       background: #000;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
     }
 
     .video-wrapper iframe {
@@ -122,12 +135,13 @@
       border: none;
     }
 
-    /* KHU VỰC TƯƠNG TÁC (TỐI ƯU MỚI) */
+    /* KHU VỰC ĐIỀN CHỮ CỐ ĐỊNH */
     .interaction-area {
+      flex: 0 0 auto; 
       background: #fff;
-      border-radius: 20px;
-      padding: 30px; /* Tăng độ thở cho viền */
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      border-radius: 16px;
+      padding: 20px 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -135,37 +149,33 @@
     }
 
     .vietnamese-hint {
-      font-size: 18px;
+      font-size: 16px;
       color: var(--ink-soft);
-      margin-bottom: 25px;
+      margin-bottom: 15px;
       font-style: italic;
       text-align: center;
     }
 
-    /* Bọc cả Điều hướng và Ô chữ trên cùng 1 hàng ngang */
     .action-row {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 40px; /* Khoảng cách giữa nút bấm và ô chữ */
-      flex-wrap: wrap;
+      gap: 30px; 
       width: 100%;
     }
 
-    /* THANH ĐIỀU HƯỚNG BÊN TRÁI */
     .controls-bar {
       display: flex;
-      gap: 12px;
+      gap: 10px;
     }
 
-    /* Biến nút thành hình tròn nhỏ gọn giống media player */
     .btn-control {
       background: var(--paper-deep);
       border: 2px solid var(--line);
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      font-size: 18px;
+      font-size: 16px;
       color: var(--ink);
       cursor: pointer;
       display: flex;
@@ -175,34 +185,26 @@
     }
 
     .btn-control:hover { 
-      background: var(--jade-soft); 
-      color: var(--jade); 
-      border-color: var(--jade); 
-      transform: scale(1.05);
+      background: var(--jade-soft); color: var(--jade); border-color: var(--jade); transform: scale(1.05);
     }
     .btn-control:disabled { 
-      opacity: 0.4; 
-      cursor: not-allowed; 
-      transform: none; 
-      background: var(--paper-deep);
-      border-color: var(--line);
+      opacity: 0.4; cursor: not-allowed; transform: none; background: var(--paper-deep); border-color: var(--line);
     }
 
-    /* Ô ĐIỀN CHỮ BÊN PHẢI */
     .grid-container {
       display: flex;
       justify-content: center;
-      gap: 12px; /* Tăng khoảng cách giữa các ô vuông */
+      gap: 10px; 
       flex-wrap: wrap;
     }
 
     .char-input {
-      width: 55px; /* Làm ô to ra một chút */
-      height: 65px;
-      font-size: 32px;
+      width: 48px; 
+      height: 56px;
+      font-size: 28px;
       text-align: center;
       border: 2px solid var(--line);
-      border-radius: 12px;
+      border-radius: 10px;
       background: #fff;
       font-weight: bold;
       color: var(--ink);
@@ -210,22 +212,12 @@
       box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
     }
 
-    .char-input:focus { 
-      outline: none; 
-      border-color: var(--gold); 
-      box-shadow: 0 0 0 4px rgba(201,162,75,0.15); 
-    }
+    .char-input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,162,75,0.15); }
     .char-input.correct { border-color: var(--jade); background: var(--jade-soft); color: var(--jade); }
     .char-input.incorrect { border-color: var(--wrong); background: var(--wrong-bg); color: var(--wrong); }
 
     .punctuation {
-      display: flex; align-items: flex-end; font-size: 32px; padding-bottom: 5px; color: var(--ink-soft);
-    }
-
-    @media (max-width: 768px) {
-      .app-layout { flex-direction: column-reverse; height: auto; }
-      .sidebar { flex: auto; height: 400px; }
-      .action-row { flex-direction: column-reverse; gap: 20px; }
+      display: flex; align-items: flex-end; font-size: 28px; padding-bottom: 5px; color: var(--ink-soft);
     }
   </style>
 </head>
@@ -247,17 +239,15 @@
       <div class="interaction-area" id="inputArea" style="display: none;">
         <div class="vietnamese-hint" id="viHint">Bấm chọn câu bên trái để bắt đầu...</div>
         
-        <!-- Bọc Điều hướng và Khung điền chữ chung một hàng -->
         <div class="action-row">
           <div class="controls-bar">
-            <button id="btnPrev" class="btn-control" title="Câu trước">⏮</button>
-            <button id="btnReplay" class="btn-control" title="Nghe lại">🔁</button>
-            <button id="btnNext" class="btn-control" title="Câu tiếp">⏭</button>
+            <button id="btnPrev" class="btn-control" title="Câu trước (PageUp)">⏮</button>
+            <button id="btnReplay" class="btn-control" title="Nghe lại (Ctrl+Space)">🔁</button>
+            <button id="btnNext" class="btn-control" title="Câu tiếp (PageDown)">⏭</button>
           </div>
           
           <div class="grid-container" id="gridContainer"></div>
         </div>
-
       </div>
     </main>
   </div>
@@ -279,17 +269,7 @@
             { "id": 9, "start": 55.9, "end": 57.2, "cn": "她是我的老師", "vi": "Cô ấy là giáo viên của tôi." },
             { "id": 10, "start": 59.3, "end": 60.4, "cn": "他是我的老師", "vi": "Anh ấy là giáo viên của tôi." },
             { "id": 11, "start": 66.9, "end": 68.3, "cn": "你叫什么名字?", "vi": "Bạn tên là gì?" },
-            { "id": 12, "start": 70.3, "end": 71.3, "cn": "你叫什么名字", "vi": "Bạn tên là gì?" },
-            { "id": 13, "start": 78.0, "end": 79.5, "cn": "我叫李明", "vi": "Tôi tên là Lý Minh." },
-            { "id": 14, "start": 81.6, "end": 82.4, "cn": "我叫李明", "vi": "Tôi tên là Lý Minh." },
-            { "id": 15, "start": 88.6, "end": 89.4, "cn": "我很好", "vi": "Tôi rất khỏe." },
-            { "id": 16, "start": 91.5, "end": 92.1, "cn": "我很好", "vi": "Tôi rất khỏe." },
-            { "id": 17, "start": 99.0, "end": 100.6, "cn": "今天天氣很好", "vi": "Thời tiết hôm nay rất tốt." },
-            { "id": 18, "start": 102.8, "end": 104.0, "cn": "今天天气很好", "vi": "Thời tiết hôm nay rất tốt." },
-            { "id": 19, "start": 110.3, "end": 111.2, "cn": "我想喝水", "vi": "Tôi muốn uống nước." },
-            { "id": 20, "start": 113.4, "end": 114.1, "cn": "我想喝水", "vi": "Tôi muốn uống nước." },
-            { "id": 21, "start": 120.8, "end": 122.5, "cn": "我喜欢吃米饭", "vi": "Tôi thích ăn cơm." },
-            { "id": 22, "start": 124.6, "end": 125.8, "cn": "我喜欢吃米饭", "vi": "Tôi thích ăn cơm." }
+            { "id": 12, "start": 70.3, "end": 71.3, "cn": "你叫什么名字", "vi": "Bạn tên là gì?" }
         ]
     };
 
@@ -299,7 +279,7 @@
 
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('ytplayer', {
-        height: '360', width: '640', videoId: lessonData.videoId,
+        height: '100%', width: '100%', videoId: lessonData.videoId,
         playerVars: { 'playsinline': 1, 'controls': 1, 'rel': 0 }
       });
       initUI();
@@ -312,7 +292,7 @@
         const btn = document.createElement('button');
         btn.className = 'btn-play-sentence';
         btn.id = `btn-sentence-${index}`;
-        btn.innerText = `Câu ${sentence.id}: ${sentence.vi.substring(0, 20)}...`;
+        btn.innerText = `Câu ${sentence.id}: ${sentence.vi}`;
         btn.onclick = () => playSentence(index);
         listContainer.appendChild(btn);
       });
@@ -331,7 +311,7 @@
       document.querySelectorAll('.btn-play-sentence').forEach(b => b.classList.remove('active'));
       const activeBtn = document.getElementById(`btn-sentence-${index}`);
       activeBtn.classList.add('active');
-      activeBtn.scrollIntoView({ behavior: 'smooth', block: 'center' }); 
+      activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); 
 
       document.getElementById('inputArea').style.display = 'flex';
       document.getElementById('viHint').innerText = "Gợi ý: " + sentence.vi;
@@ -356,7 +336,6 @@
     function renderGrid(chineseText) {
       const container = document.getElementById('gridContainer');
       container.innerHTML = ''; 
-
       const punctuationRegex = /[，。！？、！?.,\s]/;
 
       for (let i = 0; i < chineseText.length; i++) {
@@ -387,7 +366,6 @@
         });
         input.addEventListener('keydown', (e) => {
           if (e.key === 'Backspace' && !e.target.value && index > 0) inputs[index - 1].focus();
-          // Kiểm tra tự động bằng nút Enter
           if (e.key === 'Enter') checkAnswer();
         });
       });
@@ -412,6 +390,29 @@
         setTimeout(() => alert("🎉 Quá chuẩn! Chuyển sang câu tiếp theo thôi!"), 100);
       }
     }
+
+    // TÍCH HỢP PHÍM TẮT VẬT LÝ
+    document.addEventListener('keydown', (e) => {
+      // Bỏ qua nếu đang gõ chữ vào input (tránh conflict phím mũi tên)
+      const isInputActive = document.activeElement && document.activeElement.tagName === 'INPUT';
+      
+      // Next: Nút Media Next, PageDown, hoặc Ctrl + Mũi tên phải
+      if (e.key === 'MediaTrackNext' || e.key === 'PageDown' || (e.ctrlKey && e.key === 'ArrowRight')) {
+        e.preventDefault();
+        document.getElementById('btnNext').click();
+      }
+      // Prev: Nút Media Prev, PageUp, hoặc Ctrl + Mũi tên trái
+      if (e.key === 'MediaTrackPrevious' || e.key === 'PageUp' || (e.ctrlKey && e.key === 'ArrowLeft')) {
+        e.preventDefault();
+        document.getElementById('btnPrev').click();
+      }
+      // Replay: Ctrl + Space
+      if (e.ctrlKey && e.key === ' ') {
+        e.preventDefault();
+        document.getElementById('btnReplay').click();
+      }
+    });
+
   </script>
 </body>
 </html>
