@@ -6,7 +6,7 @@
   <title>Nghe Chép Chính Tả (Pro Version)</title>
   <style>
 :root{--bg:#0f1720;--panel:#151f2b;--card:#f8fafc;--ink:#17212b;--muted:#748091;--line:#dbe3ea;--accent:#3f7f72;--accent-2:#64b5a3;--accent-soft:#e5f3ef;--wrong:#d65353;--wrong-bg:#fff0f0;--shadow:0 18px 50px rgba(15,23,32,.16)}
-*{box-sizing:border-box}html,body{width:100%;height:100%;margin:0}body{font-family:Inter,"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;background:radial-gradient(circle at 10% 10%,rgba(100,181,163,.11),transparent 28%),radial-gradient(circle at 95% 90%,rgba(214,169,77,.09),transparent 24%),var(--bg);color:#fff;padding:14px;overflow:hidden}.app-shell{height:calc(100vh - 28px);display:flex;flex-direction:column;gap:12px;min-height:0}.topbar{flex:0 0 58px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 18px 0 20px;border:1px solid rgba(255,255,255,.08);background:rgba(21,31,43,.88);backdrop-filter:blur(16px);border-radius:18px;box-shadow:0 10px 35px rgba(0,0,0,.12)}.brand{display:flex;align-items:center;gap:11px;min-width:0}.brand-icon{width:36px;height:36px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),#5a9d8e);box-shadow:0 7px 18px rgba(63,127,114,.32);font-size:19px}.brand-title{font-size:16px;font-weight:800;letter-spacing:.2px}.brand-sub{font-size:11px;color:#9eabb9;margin-top:2px}.progress-wrap{width:min(420px,42vw);display:flex;flex-direction:column;gap:6px}.progress-meta{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#aab5c1}.progress-meta strong{color:#fff;font-size:12px}.progress{height:7px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:inherit;transition:width .25s ease}.app-layout{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:290px minmax(0,1fr);gap:12px}.sidebar{min-height:0;display:flex;flex-direction:column;overflow:hidden;background:rgba(21,31,43,.96);border:1px solid rgba(255,255,255,.07);border-radius:18px;box-shadow:var(--shadow)}.sidebar-head{padding:17px 17px 13px;border-bottom:1px solid rgba(255,255,255,.07)}.sidebar-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.sidebar-title h2{margin:0;font-size:14px}.count-badge{padding:4px 8px;border-radius:999px;background:rgba(100,181,163,.12);color:#8fd5c5;font-size:10px;font-weight:800}.sidebar-note{margin-top:6px;color:#7f8b98;font-size:10px}.sentence-list{flex:1;min-height:0;overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:7px;scrollbar-width:thin;scrollbar-color:#3a4653 transparent}.sentence-list::-webkit-scrollbar{width:6px}.sentence-list::-webkit-scrollbar-thumb{background:#3a4653;border-radius:99px}.btn-play-sentence{position:relative;flex:0 0 46px;width:100%;border:1px solid rgba(255,255,255,.06);border-radius:12px;background:#182331;color:#c6d0da;padding:0 12px 0 14px;text-align:left;font-size:12px;font-weight:650;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:.18s ease}.btn-play-sentence:before{content:"";width:4px;height:18px;border-radius:4px;background:transparent;position:absolute;left:0;top:14px}.btn-play-sentence:hover{background:#203041;color:#fff;transform:translateX(2px)}.btn-play-sentence.active{background:linear-gradient(90deg,rgba(63,127,114,.25),rgba(63,127,114,.08));color:#fff;border-color:rgba(100,181,163,.28)}.btn-play-sentence.active:before{background:var(--accent-2)}.main-content{min-width:0;min-height:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:12px}.video-card{position:relative;min-height:0;overflow:hidden;border-radius:18px;background:#000;border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)}.video-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.video-label{position:absolute;z-index:2;left:14px;top:14px;padding:7px 10px;border-radius:10px;background:rgba(12,18,25,.72);backdrop-filter:blur(10px);color:#fff;font-size:11px;font-weight:700;border:1px solid rgba(255,255,255,.09);pointer-events:none}.interaction-area{position:relative;flex:0 0 250px;min-height:250px;border-radius:20px;background:var(--card);color:var(--ink);padding:0;box-shadow:0 14px 38px rgba(23,33,43,.14);border:1px solid rgba(255,255,255,.7);overflow:hidden}.interaction-area:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(100,181,163,.10),transparent 45%);pointer-events:none}.practice-head{position:absolute;z-index:3;left:24px;top:20px;right:24px;display:flex;align-items:center;justify-content:flex-start;gap:12px}.practice-title{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:850;color:#4f5b68;letter-spacing:.2px}.status-pill{padding:6px 10px;border-radius:999px;font-size:10px;font-weight:850;background:#eef2f5;color:#7a8592}.status-pill.success{color:var(--accent);background:var(--accent-soft)}.vietnamese-hint{position:absolute;z-index:2;left:50%;top:20px;transform:translateX(-50%);font-size:17px;color:#5f6a77;text-align:center;min-height:25px;font-style:normal;font-weight:650;max-width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.typing-zone{position:absolute;z-index:2;inset:0;display:flex;justify-content:center;align-items:center;padding:44px 24px 64px}.grid-container{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:nowrap;min-width:0;max-width:100%;overflow:hidden}.char-input{width:60px;height:68px;flex:0 0 60px;font-size:32px;text-align:center;border:1.5px solid var(--line);border-radius:14px;background:#fff;font-weight:800;color:var(--ink);transition:.16s ease;box-shadow:0 5px 12px rgba(22,34,45,.05)}.char-input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(63,127,114,.12),0 6px 18px rgba(63,127,114,.08);transform:translateY(-1px)}.char-input.correct{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}.char-input.incorrect{border-color:var(--wrong);background:var(--wrong-bg);color:var(--wrong)}.punctuation{display:flex;align-items:center;font-size:30px;color:#77818d}.controls-dock{position:absolute;z-index:2;left:50%;bottom:16px;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:10px}.btn-control{width:52px;height:44px;border:1px solid var(--line);border-radius:13px;background:#fff;color:#4f5b68;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:17px;transition:.18s ease;box-shadow:0 5px 14px rgba(23,33,43,.07)}.btn-control:hover{transform:translateY(-2px);border-color:#a9c9c2;background:#f5fbf9;color:var(--accent)}.btn-control.replay{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 8px 18px rgba(63,127,114,.24)}.btn-control:disabled{opacity:.38;cursor:not-allowed;transform:none}.nav-separator{width:1px;height:28px;background:var(--line);margin:0 2px}@media(max-width:900px){.app-layout{grid-template-columns:230px minmax(0,1fr)}.interaction-area{flex-basis:220px;min-height:220px}.char-input{width:48px;flex-basis:48px;height:56px;font-size:25px}.grid-container{gap:7px}.controls-dock{bottom:14px}}
+*{box-sizing:border-box}html,body{width:100%;height:100%;margin:0}body{font-family:Inter,"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;background:radial-gradient(circle at 10% 10%,rgba(100,181,163,.11),transparent 28%),radial-gradient(circle at 95% 90%,rgba(214,169,77,.09),transparent 24%),var(--bg);color:#fff;padding:14px;overflow:hidden}.app-shell{height:calc(100vh - 28px);display:flex;flex-direction:column;gap:12px;min-height:0}.topbar{flex:0 0 58px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 18px 0 20px;border:1px solid rgba(255,255,255,.08);background:rgba(21,31,43,.88);backdrop-filter:blur(16px);border-radius:18px;box-shadow:0 10px 35px rgba(0,0,0,.12)}.brand{display:flex;align-items:center;gap:11px;min-width:0}.brand-icon{width:36px;height:36px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),#5a9d8e);box-shadow:0 7px 18px rgba(63,127,114,.32);font-size:19px}.brand-title{font-size:16px;font-weight:800;letter-spacing:.2px}.brand-sub{font-size:11px;color:#9eabb9;margin-top:2px}.progress-wrap{width:min(420px,42vw);display:flex;flex-direction:column;gap:6px}.progress-meta{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#aab5c1}.progress-meta strong{color:#fff;font-size:12px}.progress{height:7px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:inherit;transition:width .25s ease}.app-layout{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:290px minmax(0,1fr);gap:12px}.sidebar{min-height:0;display:flex;flex-direction:column;overflow:hidden;background:rgba(21,31,43,.96);border:1px solid rgba(255,255,255,.07);border-radius:18px;box-shadow:var(--shadow)}.sidebar-head{padding:17px 17px 13px;border-bottom:1px solid rgba(255,255,255,.07)}.sidebar-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.sidebar-title h2{margin:0;font-size:14px}.count-badge{padding:4px 8px;border-radius:999px;background:rgba(100,181,163,.12);color:#8fd5c5;font-size:10px;font-weight:800}.sidebar-note{margin-top:6px;color:#7f8b98;font-size:10px}.sentence-list{flex:1;min-height:0;overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:7px;scrollbar-width:thin;scrollbar-color:#3a4653 transparent}.sentence-list::-webkit-scrollbar{width:6px}.sentence-list::-webkit-scrollbar-thumb{background:#3a4653;border-radius:99px}.btn-play-sentence{position:relative;flex:0 0 46px;width:100%;border:1px solid rgba(255,255,255,.06);border-radius:12px;background:#182331;color:#c6d0da;padding:0 12px 0 14px;text-align:left;font-size:12px;font-weight:650;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:.18s ease}.btn-play-sentence:before{content:"";width:4px;height:18px;border-radius:4px;background:transparent;position:absolute;left:0;top:14px}.btn-play-sentence:hover{background:#203041;color:#fff;transform:translateX(2px)}.btn-play-sentence.active{background:linear-gradient(90deg,rgba(63,127,114,.25),rgba(63,127,114,.08));color:#fff;border-color:rgba(100,181,163,.28)}.btn-play-sentence.active:before{background:var(--accent-2)}.main-content{min-width:0;min-height:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:12px}.video-card{position:relative;min-height:0;overflow:hidden;border-radius:18px;background:#000;border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)}.video-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.video-label{position:absolute;z-index:2;left:14px;top:14px;padding:7px 10px;border-radius:10px;background:rgba(12,18,25,.72);backdrop-filter:blur(10px);color:#fff;font-size:11px;font-weight:700;border:1px solid rgba(255,255,255,.09);pointer-events:none}.interaction-area{position:relative;flex:0 0 250px;min-height:250px;border-radius:20px;background:var(--card);color:var(--ink);padding:0;box-shadow:0 14px 38px rgba(23,33,43,.14);border:1px solid rgba(255,255,255,.7);overflow:hidden}.interaction-area:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(100,181,163,.10),transparent 45%);pointer-events:none}.practice-head{position:absolute;z-index:3;left:24px;top:20px;right:24px;display:flex;align-items:center;justify-content:flex-start;gap:12px}.practice-title{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:850;color:#4f5b68;letter-spacing:.2px}.status-pill{padding:6px 10px;border-radius:999px;font-size:10px;font-weight:850;background:#eef2f5;color:#7a8592}.status-pill.success{color:var(--accent);background:var(--accent-soft)}.vietnamese-hint{position:absolute;z-index:2;left:50%;top:20px;transform:translateX(-50%);font-size:17px;color:#5f6a77;text-align:center;min-height:25px;font-style:normal;font-weight:650;max-width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.typing-zone{position:absolute;z-index:2;inset:0;display:flex;justify-content:center;align-items:center;padding:44px 24px 64px}.grid-container{display:flex;justify-content:center;align-items:center;gap:9px;flex-wrap:nowrap;min-width:0;max-width:100%;overflow:hidden}.char-input{width:86px;height:68px;flex:0 0 86px;font-size:20px;letter-spacing:.2px;text-align:center;text-transform:lowercase;border:1.5px solid var(--line);border-radius:14px;background:#fff;font-weight:800;color:var(--ink);transition:.16s ease;box-shadow:0 5px 12px rgba(22,34,45,.05)}.char-input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(63,127,114,.12),0 6px 18px rgba(63,127,114,.08);transform:translateY(-1px)}.char-input.correct{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}.char-input.incorrect{border-color:var(--wrong);background:var(--wrong-bg);color:var(--wrong)}.punctuation{display:flex;align-items:center;font-size:28px;color:#77818d}.controls-dock{position:absolute;z-index:2;left:50%;bottom:16px;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:10px}.btn-control{width:52px;height:44px;border:1px solid var(--line);border-radius:13px;background:#fff;color:#4f5b68;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:17px;transition:.18s ease;box-shadow:0 5px 14px rgba(23,33,43,.07)}.btn-control:hover{transform:translateY(-2px);border-color:#a9c9c2;background:#f5fbf9;color:var(--accent)}.btn-control.replay{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 8px 18px rgba(63,127,114,.24)}.btn-control:disabled{opacity:.38;cursor:not-allowed;transform:none}.nav-separator{width:1px;height:28px;background:var(--line);margin:0 2px}@media(max-width:900px){.app-layout{grid-template-columns:230px minmax(0,1fr)}.interaction-area{flex-basis:220px;min-height:220px}.char-input{width:74px;flex-basis:74px;height:56px;font-size:18px}.grid-container{gap:7px}.controls-dock{bottom:14px}}
   </style>
 </head>
 <body>
@@ -41,18 +41,18 @@
     const lessonData = {
         "videoId": "Mm2z0UcKMrg",
         "sentences": [
-            { "id": 1, "start": 11.4, "end": 12.3, "cn": "我是學生", "vi": "Tôi là học sinh." },
-            { "id": 2, "start": 14.4, "end": 15.2, "cn": "我是學生", "vi": "Tôi là học sinh." },
-            { "id": 3, "start": 22.1, "end": 23.6, "cn": "我不是中国人", "vi": "Tôi không phải là người Trung Quốc." },
-            { "id": 4, "start": 25.7, "end": 26.9, "cn": "我不是中国人", "vi": "Tôi không phải là người Trung Quốc." },
-            { "id": 5, "start": 33.7, "end": 34.9, "cn": "你是哪国人?", "vi": "Bạn là người nước nào?" },
-            { "id": 6, "start": 37.0, "end": 37.8, "cn": "你是哪国人", "vi": "Bạn là người nước nào?" },
-            { "id": 7, "start": 44.5, "end": 45.8, "cn": "这是我的朋友", "vi": "Đây là bạn của tôi." },
-            { "id": 8, "start": 47.9, "end": 48.9, "cn": "這是我的朋友", "vi": "Đây là bạn của tôi." },
-            { "id": 9, "start": 55.9, "end": 57.2, "cn": "她是我的老師", "vi": "Cô ấy là giáo viên của tôi." },
-            { "id": 10, "start": 59.3, "end": 60.4, "cn": "他是我的老師", "vi": "Anh ấy là giáo viên của tôi." },
-            { "id": 11, "start": 66.9, "end": 68.3, "cn": "你叫什么名字?", "vi": "Bạn tên là gì?" },
-            { "id": 12, "start": 70.3, "end": 71.3, "cn": "你叫什么名字", "vi": "Bạn tên là gì?" }
+            { "id": 1, "start": 11.4, "end": 12.3, "cn": "我是學生", "pinyin": ["wo", "shi", "xue", "sheng"], "vi": "Tôi là học sinh." },
+            { "id": 2, "start": 14.4, "end": 15.2, "cn": "我是學生", "pinyin": ["wo", "shi", "xue", "sheng"], "vi": "Tôi là học sinh." },
+            { "id": 3, "start": 22.1, "end": 23.6, "cn": "我不是中国人", "pinyin": ["wo", "bu", "shi", "zhong", "guo", "ren"], "vi": "Tôi không phải là người Trung Quốc." },
+            { "id": 4, "start": 25.7, "end": 26.9, "cn": "我不是中国人", "pinyin": ["wo", "bu", "shi", "zhong", "guo", "ren"], "vi": "Tôi không phải là người Trung Quốc." },
+            { "id": 5, "start": 33.7, "end": 34.9, "cn": "你是哪国人?", "pinyin": ["ni", "shi", "na", "guo", "ren"], "vi": "Bạn là người nước nào?" },
+            { "id": 6, "start": 37.0, "end": 37.8, "cn": "你是哪国人", "pinyin": ["ni", "shi", "na", "guo", "ren"], "vi": "Bạn là người nước nào?" },
+            { "id": 7, "start": 44.5, "end": 45.8, "cn": "这是我的朋友", "pinyin": ["zhe", "shi", "wo", "de", "peng", "you"], "vi": "Đây là bạn của tôi." },
+            { "id": 8, "start": 47.9, "end": 48.9, "cn": "這是我的朋友", "pinyin": ["zhe", "shi", "wo", "de", "peng", "you"], "vi": "Đây là bạn của tôi." },
+            { "id": 9, "start": 55.9, "end": 57.2, "cn": "她是我的老師", "pinyin": ["ta", "shi", "wo", "de", "lao", "shi"], "vi": "Cô ấy là giáo viên của tôi." },
+            { "id": 10, "start": 59.3, "end": 60.4, "cn": "他是我的老師", "pinyin": ["ta", "shi", "wo", "de", "lao", "shi"], "vi": "Anh ấy là giáo viên của tôi." },
+            { "id": 11, "start": 66.9, "end": 68.3, "cn": "你叫什么名字?", "pinyin": ["ni", "jiao", "shen", "me", "ming", "zi"], "vi": "Bạn tên là gì?" },
+            { "id": 12, "start": 70.3, "end": 71.3, "cn": "你叫什么名字", "pinyin": ["ni", "jiao", "shen", "me", "ming", "zi"], "vi": "Bạn tên là gì?" }
         ]
     };
 
@@ -124,13 +124,14 @@
         }
       }, 100);
 
-      renderGrid(sentence.cn);
+      renderGrid(sentence.cn, sentence.pinyin);
     }
 
-    function renderGrid(chineseText) {
+    function renderGrid(chineseText, pinyinAnswers = []) {
       const container = document.getElementById('gridContainer');
-      container.innerHTML = ''; 
+      container.innerHTML = '';
       const punctuationRegex = /[，。！？、！?.,\s]/;
+      let answerIndex = 0;
 
       for (let i = 0; i < chineseText.length; i++) {
         const char = chineseText[i];
@@ -142,38 +143,66 @@
         } else {
           const input = document.createElement('input');
           input.type = 'text';
+          input.inputMode = 'text';
+          input.autocomplete = 'off';
+          input.autocapitalize = 'none';
+          input.spellcheck = false;
           input.className = 'char-input';
-          input.maxLength = 1;
-          input.dataset.correctChar = char; 
+          input.maxLength = 12;
+          input.placeholder = 'pinyin';
+          input.dataset.correctPinyin = (pinyinAnswers[answerIndex] || '').toLowerCase();
+          input.dataset.hanzi = char;
           container.appendChild(input);
+          answerIndex++;
         }
       }
       setupInputJumping();
     }
 
+    function normalizePinyin(value) {
+      return value
+        .trim()
+        .toLowerCase()
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/ü/g, 'u')
+        .replace(/[^a-z0-9v]/g, '');
+    }
+
     function setupInputJumping() {
       const inputs = document.querySelectorAll('.char-input');
       inputs.forEach((input, index) => {
-        input.addEventListener('input', (e) => {
-          input.classList.remove('correct', 'incorrect'); 
-          if (e.target.value && index < inputs.length - 1) inputs[index + 1].focus();
+        input.addEventListener('input', () => {
+          input.value = input.value.replace(/[^a-zA-Z0-9üÜāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/g, '');
+          input.classList.remove('correct', 'incorrect');
         });
         input.addEventListener('keydown', (e) => {
-          if (e.key === 'Backspace' && !e.target.value && index > 0) inputs[index - 1].focus();
-          if (e.key === 'Enter') checkAnswer();
+          if (e.key === ' ') {
+            e.preventDefault();
+            if (input.value && index < inputs.length - 1) inputs[index + 1].focus();
+            return;
+          }
+          if (e.key === 'Backspace' && !e.target.value && index > 0) {
+            e.preventDefault();
+            inputs[index - 1].focus();
+            return;
+          }
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            checkAnswer();
+          }
         });
       });
-      if(inputs.length > 0) inputs[0].focus();
+      if (inputs.length > 0) inputs[0].focus();
     }
 
     function checkAnswer() {
       const inputs = document.querySelectorAll('.char-input');
       let allCorrect = true;
       inputs.forEach(input => {
-        const userAnswer = input.value.trim();
-        const correctAnswer = input.dataset.correctChar;
+        const userAnswer = normalizePinyin(input.value);
+        const correctAnswer = normalizePinyin(input.dataset.correctPinyin);
         input.classList.remove('correct', 'incorrect');
-        if (userAnswer === correctAnswer) {
+        if (userAnswer && userAnswer === correctAnswer) {
           input.classList.add('correct');
         } else {
           input.classList.add('incorrect');
@@ -185,7 +214,7 @@
         document.getElementById('statusPill').classList.add('success');
         setTimeout(() => alert("🎉 Quá chuẩn! Chuyển sang câu tiếp theo thôi!"), 100);
       } else {
-        document.getElementById('statusPill').innerText = 'Còn chữ chưa đúng';
+        document.getElementById('statusPill').innerText = 'Pinyin chưa đúng';
         document.getElementById('statusPill').classList.remove('success');
       }
     }
