@@ -3,10 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nghe Chép Chính Tả (Pro Version)</title>
+  <title>Chinese Listening Lab</title>
   <style>
-:root{--bg:#0f1720;--panel:#151f2b;--card:#f8fafc;--ink:#17212b;--muted:#748091;--line:#dbe3ea;--accent:#3f7f72;--accent-2:#64b5a3;--accent-soft:#e5f3ef;--wrong:#d65353;--wrong-bg:#fff0f0;--shadow:0 18px 50px rgba(15,23,32,.16)}
-*{box-sizing:border-box}html,body{width:100%;height:100%;margin:0}body{font-family:Inter,"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;background:radial-gradient(circle at 10% 10%,rgba(100,181,163,.11),transparent 28%),radial-gradient(circle at 95% 90%,rgba(214,169,77,.09),transparent 24%),var(--bg);color:#fff;padding:14px;overflow:hidden}.app-shell{height:calc(100vh - 28px);display:flex;flex-direction:column;gap:12px;min-height:0}.topbar{flex:0 0 58px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 18px 0 20px;border:1px solid rgba(255,255,255,.08);background:rgba(21,31,43,.88);backdrop-filter:blur(16px);border-radius:18px;box-shadow:0 10px 35px rgba(0,0,0,.12)}.brand{display:flex;align-items:center;gap:11px;min-width:0}.brand-icon{width:36px;height:36px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),#5a9d8e);box-shadow:0 7px 18px rgba(63,127,114,.32);font-size:19px}.brand-title{font-size:16px;font-weight:800;letter-spacing:.2px}.brand-sub{font-size:11px;color:#9eabb9;margin-top:2px}.progress-wrap{width:min(420px,42vw);display:flex;flex-direction:column;gap:6px}.progress-meta{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#aab5c1}.progress-meta strong{color:#fff;font-size:12px}.progress{height:7px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:inherit;transition:width .25s ease}.app-layout{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:290px minmax(0,1fr);gap:12px}.sidebar{min-height:0;display:flex;flex-direction:column;overflow:hidden;background:rgba(21,31,43,.96);border:1px solid rgba(255,255,255,.07);border-radius:18px;box-shadow:var(--shadow)}.sidebar-head{padding:17px 17px 13px;border-bottom:1px solid rgba(255,255,255,.07)}.sidebar-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.sidebar-title h2{margin:0;font-size:14px}.count-badge{padding:4px 8px;border-radius:999px;background:rgba(100,181,163,.12);color:#8fd5c5;font-size:10px;font-weight:800}.sidebar-note{margin-top:6px;color:#7f8b98;font-size:10px}.sentence-list{flex:1;min-height:0;overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:7px;scrollbar-width:thin;scrollbar-color:#3a4653 transparent}.sentence-list::-webkit-scrollbar{width:6px}.sentence-list::-webkit-scrollbar-thumb{background:#3a4653;border-radius:99px}.btn-play-sentence{position:relative;flex:0 0 46px;width:100%;border:1px solid rgba(255,255,255,.06);border-radius:12px;background:#182331;color:#c6d0da;padding:0 12px 0 14px;text-align:left;font-size:12px;font-weight:650;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:.18s ease}.btn-play-sentence:before{content:"";width:4px;height:18px;border-radius:4px;background:transparent;position:absolute;left:0;top:14px}.btn-play-sentence:hover{background:#203041;color:#fff;transform:translateX(2px)}.btn-play-sentence.active{background:linear-gradient(90deg,rgba(63,127,114,.25),rgba(63,127,114,.08));color:#fff;border-color:rgba(100,181,163,.28)}.btn-play-sentence.active:before{background:var(--accent-2)}.main-content{min-width:0;min-height:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:12px}.video-card{position:relative;min-height:0;overflow:hidden;border-radius:18px;background:#000;border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)}.video-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.video-label{position:absolute;z-index:2;left:14px;top:14px;padding:7px 10px;border-radius:10px;background:rgba(12,18,25,.72);backdrop-filter:blur(10px);color:#fff;font-size:11px;font-weight:700;border:1px solid rgba(255,255,255,.09);pointer-events:none}.interaction-area{position:relative;flex:0 0 250px;min-height:250px;border-radius:20px;background:var(--card);color:var(--ink);padding:0;box-shadow:0 14px 38px rgba(23,33,43,.14);border:1px solid rgba(255,255,255,.7);overflow:hidden}.interaction-area:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(100,181,163,.10),transparent 45%);pointer-events:none}.practice-head{position:absolute;z-index:3;left:24px;top:20px;right:24px;display:flex;align-items:center;justify-content:flex-start;gap:12px}.practice-title{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:850;color:#4f5b68;letter-spacing:.2px}.status-pill{padding:6px 10px;border-radius:999px;font-size:10px;font-weight:850;background:#eef2f5;color:#7a8592}.status-pill.success{color:var(--accent);background:var(--accent-soft)}.vietnamese-hint{position:absolute;z-index:2;left:50%;top:20px;transform:translateX(-50%);font-size:17px;color:#5f6a77;text-align:center;min-height:25px;font-style:normal;font-weight:650;max-width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.typing-zone{position:absolute;z-index:2;inset:0;display:flex;justify-content:center;align-items:center;padding:44px 24px 64px}.grid-container{display:flex;justify-content:center;align-items:center;gap:9px;flex-wrap:nowrap;min-width:0;max-width:100%;overflow:hidden}.char-input{width:86px;height:68px;flex:0 0 86px;font-size:30px;letter-spacing:0;text-align:center;border:1.5px solid var(--line);border-radius:14px;background:#fff;font-weight:800;color:var(--ink);transition:.16s ease;box-shadow:0 5px 12px rgba(22,34,45,.05);font-family:'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Segoe UI',sans-serif}.char-input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(63,127,114,.12),0 6px 18px rgba(63,127,114,.08);transform:translateY(-1px)}.char-input.correct{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}.char-input.incorrect{border-color:var(--wrong);background:var(--wrong-bg);color:var(--wrong)}.punctuation{display:flex;align-items:center;font-size:28px;color:#77818d}.controls-dock{position:absolute;z-index:2;left:50%;bottom:16px;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:10px}.btn-control{width:52px;height:44px;border:1px solid var(--line);border-radius:13px;background:#fff;color:#4f5b68;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:17px;transition:.18s ease;box-shadow:0 5px 14px rgba(23,33,43,.07)}.btn-control:hover{transform:translateY(-2px);border-color:#a9c9c2;background:#f5fbf9;color:var(--accent)}.btn-control.replay{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 8px 18px rgba(63,127,114,.24)}.btn-control:disabled{opacity:.38;cursor:not-allowed;transform:none}.nav-separator{width:1px;height:28px;background:var(--line);margin:0 2px}@media(max-width:900px){.app-layout{grid-template-columns:230px minmax(0,1fr)}.interaction-area{flex-basis:220px;min-height:220px}.char-input{width:74px;flex-basis:74px;height:56px;font-size:18px}.grid-container{gap:7px}.controls-dock{bottom:14px}}
+    :root{
+      --bg:#0f1720;--panel:#151f2b;--card:#f8fafc;--ink:#17212b;--muted:#748091;
+      --line:#dbe3ea;--accent:#3f7f72;--accent-2:#69b7a5;--accent-soft:#e8f5f1;
+      --wrong:#c75b5b;--wrong-bg:#fff2f2;--ok:#3f7f72;--shadow:0 18px 50px rgba(15,23,32,.16)
+    }
+    *{box-sizing:border-box}
+    html,body{width:100%;height:100%;margin:0}
+    body{
+      font-family:Inter,"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+      background:radial-gradient(circle at 10% 10%,rgba(105,183,165,.12),transparent 28%),
+                 radial-gradient(circle at 95% 90%,rgba(214,169,77,.08),transparent 24%),var(--bg);
+      color:#fff;padding:14px;overflow:hidden
+    }
+    .app-shell{height:calc(100vh - 28px);display:flex;flex-direction:column;gap:12px;min-height:0}
+    .topbar{
+      flex:0 0 58px;display:flex;align-items:center;justify-content:space-between;gap:18px;
+      padding:0 18px 0 20px;border:1px solid rgba(255,255,255,.08);background:rgba(21,31,43,.88);
+      backdrop-filter:blur(16px);border-radius:18px;box-shadow:0 10px 35px rgba(0,0,0,.12)
+    }
+    .brand{display:flex;align-items:center;gap:11px;min-width:0}
+    .brand-icon{width:36px;height:36px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),#5a9d8e);box-shadow:0 7px 18px rgba(63,127,114,.32);font-size:19px}
+    .brand-title{font-size:16px;font-weight:800;letter-spacing:.2px}.brand-sub{font-size:11px;color:#9eabb9;margin-top:2px}
+    .progress-wrap{width:min(420px,42vw);display:flex;flex-direction:column;gap:6px}
+    .progress-meta{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#aab5c1}.progress-meta strong{color:#fff;font-size:12px}
+    .progress{height:7px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:inherit;transition:width .25s ease}
+    .app-layout{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:290px minmax(0,1fr);gap:12px}
+    .sidebar{min-height:0;display:flex;flex-direction:column;overflow:hidden;background:rgba(21,31,43,.96);border:1px solid rgba(255,255,255,.07);border-radius:18px;box-shadow:var(--shadow)}
+    .sidebar-head{padding:17px 17px 13px;border-bottom:1px solid rgba(255,255,255,.07)}
+    .sidebar-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.sidebar-title h2{margin:0;font-size:14px}
+    .count-badge{padding:4px 8px;border-radius:999px;background:rgba(100,181,163,.12);color:#8fd5c5;font-size:10px;font-weight:800}
+    .sidebar-note{margin-top:6px;color:#7f8b98;font-size:10px}
+    .sentence-list{flex:1;min-height:0;overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:7px;scrollbar-width:thin;scrollbar-color:#3a4653 transparent}
+    .sentence-list::-webkit-scrollbar{width:6px}.sentence-list::-webkit-scrollbar-thumb{background:#3a4653;border-radius:99px}
+    .btn-play-sentence{position:relative;flex:0 0 46px;width:100%;border:1px solid rgba(255,255,255,.06);border-radius:12px;background:#182331;color:#c6d0da;padding:0 12px 0 14px;text-align:left;font-size:12px;font-weight:650;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:.18s ease}
+    .btn-play-sentence:before{content:"";width:4px;height:18px;border-radius:4px;background:transparent;position:absolute;left:0;top:14px}.btn-play-sentence:hover{background:#203041;color:#fff;transform:translateX(2px)}
+    .btn-play-sentence.active{background:linear-gradient(90deg,rgba(63,127,114,.25),rgba(63,127,114,.08));color:#fff;border-color:rgba(100,181,163,.28)}.btn-play-sentence.active:before{background:var(--accent-2)}
+    .main-content{min-width:0;min-height:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:12px}
+    .video-card{position:relative;min-height:0;overflow:hidden;border-radius:18px;background:#000;border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)}.video-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .video-label{position:absolute;z-index:2;left:14px;top:14px;padding:7px 10px;border-radius:10px;background:rgba(12,18,25,.72);backdrop-filter:blur(10px);color:#fff;font-size:11px;font-weight:700;border:1px solid rgba(255,255,255,.09);pointer-events:none}
+    .interaction-area{position:relative;flex:0 0 290px;min-height:290px;border-radius:20px;background:var(--card);color:var(--ink);padding:0;box-shadow:0 14px 38px rgba(23,33,43,.14);border:1px solid rgba(255,255,255,.7);overflow:hidden}
+    .interaction-area:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(100,181,163,.10),transparent 45%);pointer-events:none}
+    .practice-head{position:absolute;z-index:3;left:24px;top:20px;right:24px;display:flex;align-items:center;justify-content:flex-start;gap:12px}
+    .practice-title{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:850;color:#4f5b68;letter-spacing:.2px}.status-pill{padding:6px 10px;border-radius:999px;font-size:10px;font-weight:850;background:#eef2f5;color:#7a8592}.status-pill.success{color:var(--accent);background:var(--accent-soft)}
+    .vietnamese-hint{position:absolute;z-index:2;left:50%;top:20px;transform:translateX(-50%);font-size:16px;color:#5f6a77;text-align:center;min-height:25px;font-style:normal;font-weight:650;max-width:68%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+    .typing-zone{position:absolute;z-index:2;inset:0;display:flex;justify-content:center;align-items:center;padding:52px 38px 72px}
+    .editor-wrap{width:min(1050px,92%);position:relative;display:flex;align-items:center;justify-content:center}
+    .answer-editor{
+      width:100%;min-height:82px;max-height:145px;overflow:auto;resize:none;
+      border:1.5px solid var(--line);border-radius:18px;background:#fff;color:var(--ink);
+      font-size:30px;line-height:1.55;font-weight:800;text-align:center;letter-spacing:.02em;
+      padding:14px 22px;outline:none;box-shadow:0 8px 22px rgba(22,34,45,.06);
+      font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Segoe UI",sans-serif;
+      white-space:pre-wrap;word-break:break-all;
+    }
+    .answer-editor:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(63,127,114,.12),0 10px 25px rgba(63,127,114,.08)}
+    .answer-editor:empty:before{content:attr(data-placeholder);color:#b4bec8;font-weight:650;pointer-events:none}
+    .answer-editor.checked .ok-char{color:var(--ok);background:var(--accent-soft);border-radius:6px;padding:0 1px}
+    .answer-editor.checked .bad-char{color:var(--wrong);background:var(--wrong-bg);border-radius:6px;padding:0 1px}
+    .answer-editor.checked .missing-char{color:#9aa4af;background:#f3f5f7;border-radius:6px;padding:0 1px}
+
+    .controls-dock{position:absolute;z-index:2;left:50%;bottom:17px;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:10px}
+    .btn-control{width:52px;height:44px;border:1px solid var(--line);border-radius:13px;background:#fff;color:#4f5b68;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:17px;transition:.18s ease;box-shadow:0 5px 14px rgba(23,33,43,.07)}
+    .btn-control:hover{transform:translateY(-2px);border-color:#a9c9c2;background:#f5fbf9;color:var(--accent)}.btn-control.replay{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 8px 18px rgba(63,127,114,.24)}
+    .btn-control:disabled{opacity:.38;cursor:not-allowed;transform:none}
+    .check-message{position:absolute;right:24px;bottom:27px;color:#7b8792;font-size:11px;font-weight:650}.check-message.success{color:var(--accent)}
+    @media(max-width:1000px){.app-layout{grid-template-columns:230px minmax(0,1fr)}.interaction-area{flex-basis:260px;min-height:260px}.answer-editor{font-size:25px}}
+    @media(max-width:760px){.topbar{padding:0 12px}.brand-sub{display:none}.progress-wrap{width:44vw}.app-layout{grid-template-columns:190px minmax(0,1fr)}.answer-editor{font-size:22px}.vietnamese-hint{font-size:14px;max-width:60%}.practice-head{left:16px;right:16px}}
   </style>
 </head>
 <body>
@@ -16,273 +82,224 @@
       <div class="progress-wrap"><div class="progress-meta"><span>Tiến độ bài nghe</span><strong id="progressText">0 / 12</strong></div><div class="progress"><div class="progress-bar" id="progressBar"></div></div></div>
     </header>
     <div class="app-layout">
-      <aside class="sidebar"><div class="sidebar-head"><div class="sidebar-title"><h2>📚 Danh sách câu</h2><span class="count-badge" id="sentenceCount">12 câu</span></div><div class="sidebar-note">Chọn câu để nghe đoạn âm thanh tương ứng</div></div><div class="sentence-list" id="sentenceList"></div></aside>
+      <aside class="sidebar">
+        <div class="sidebar-head"><div class="sidebar-title"><h2>📚 Danh sách câu</h2><span class="count-badge" id="sentenceCount">12 câu</span></div><div class="sidebar-note">Chọn câu để nghe đoạn âm thanh tương ứng</div></div>
+        <div class="sentence-list" id="sentenceList"></div>
+      </aside>
       <main class="main-content">
         <div class="video-card"><div class="video-label" id="videoLabel">Chưa chọn câu</div><div id="ytplayer"></div></div>
         <div class="interaction-area" id="inputArea">
           <div class="practice-head"><div class="practice-title">✍️ LUYỆN CHÉP CHÍNH TẢ</div><div class="status-pill" id="statusPill">Chọn một câu để bắt đầu</div></div>
           <div class="vietnamese-hint" id="viHint">Bấm chọn câu bên trái để bắt đầu...</div>
           <div class="typing-zone">
-            <div class="grid-container" id="gridContainer"></div>
+            <div class="editor-wrap"><div id="answerEditor" class="answer-editor" contenteditable="true" spellcheck="false" role="textbox" aria-label="Nhập câu tiếng Trung" data-placeholder="Nhập câu tiếng Trung bằng Pinyin..."></div></div>
           </div>
           <div class="controls-dock">
-            <button id="btnPrev" class="btn-control" title="Câu trước — ← hoặc PageUp">◀</button>
-            <button id="btnReplay" class="btn-control replay" title="Nghe lại — Ctrl + Space">↻</button>
-            <button id="btnNext" class="btn-control" title="Câu tiếp — → hoặc PageDown">▶</button>
+            <button id="btnPrev" class="btn-control" title="Câu trước">◀</button>
+            <button id="btnReplay" class="btn-control replay" title="Nghe lại">↻</button>
+            <button id="btnNext" class="btn-control" title="Câu tiếp">▶</button>
           </div>
-                  </div>
+          <div id="checkMessage" class="check-message"></div>
+        </div>
       </main>
     </div>
   </div>
 
   <script src="https://www.youtube.com/iframe_api"></script>
-
   <script>
     const lessonData = {
-        "videoId": "Mm2z0UcKMrg",
-        "sentences": [
-            { "id": 1, "start": 11.4, "end": 12.3, "cn": "我是學生", "pinyin": ["wo", "shi", "xue", "sheng"], "vi": "Tôi là học sinh." },
-            { "id": 2, "start": 14.4, "end": 15.2, "cn": "我是學生", "pinyin": ["wo", "shi", "xue", "sheng"], "vi": "Tôi là học sinh." },
-            { "id": 3, "start": 22.1, "end": 23.6, "cn": "我不是中国人", "pinyin": ["wo", "bu", "shi", "zhong", "guo", "ren"], "vi": "Tôi không phải là người Trung Quốc." },
-            { "id": 4, "start": 25.7, "end": 26.9, "cn": "我不是中国人", "pinyin": ["wo", "bu", "shi", "zhong", "guo", "ren"], "vi": "Tôi không phải là người Trung Quốc." },
-            { "id": 5, "start": 33.7, "end": 34.9, "cn": "你是哪国人?", "pinyin": ["ni", "shi", "na", "guo", "ren"], "vi": "Bạn là người nước nào?" },
-            { "id": 6, "start": 37.0, "end": 37.8, "cn": "你是哪国人", "pinyin": ["ni", "shi", "na", "guo", "ren"], "vi": "Bạn là người nước nào?" },
-            { "id": 7, "start": 44.5, "end": 45.8, "cn": "这是我的朋友", "pinyin": ["zhe", "shi", "wo", "de", "peng", "you"], "vi": "Đây là bạn của tôi." },
-            { "id": 8, "start": 47.9, "end": 48.9, "cn": "這是我的朋友", "pinyin": ["zhe", "shi", "wo", "de", "peng", "you"], "vi": "Đây là bạn của tôi." },
-            { "id": 9, "start": 55.9, "end": 57.2, "cn": "她是我的老師", "pinyin": ["ta", "shi", "wo", "de", "lao", "shi"], "vi": "Cô ấy là giáo viên của tôi." },
-            { "id": 10, "start": 59.3, "end": 60.4, "cn": "他是我的老師", "pinyin": ["ta", "shi", "wo", "de", "lao", "shi"], "vi": "Anh ấy là giáo viên của tôi." },
-            { "id": 11, "start": 66.9, "end": 68.3, "cn": "你叫什么名字?", "pinyin": ["ni", "jiao", "shen", "me", "ming", "zi"], "vi": "Bạn tên là gì?" },
-            { "id": 12, "start": 70.3, "end": 71.3, "cn": "你叫什么名字", "pinyin": ["ni", "jiao", "shen", "me", "ming", "zi"], "vi": "Bạn tên là gì?" }
-        ]
+      videoId: "Mm2z0UcKMrg",
+      sentences: [
+        {id:1,start:11.4,end:12.3,cn:"我是學生",vi:"Tôi là học sinh."},
+        {id:2,start:14.4,end:15.2,cn:"我是學生",vi:"Tôi là học sinh."},
+        {id:3,start:22.1,end:23.6,cn:"我不是中国人",vi:"Tôi không phải là người Trung Quốc."},
+        {id:4,start:25.7,end:26.9,cn:"我不是中国人",vi:"Tôi không phải là người Trung Quốc."},
+        {id:5,start:33.7,end:34.9,cn:"你是哪国人?",vi:"Bạn là người nước nào?"},
+        {id:6,start:37.0,end:37.8,cn:"你是哪国人",vi:"Bạn là người nước nào?"},
+        {id:7,start:44.5,end:45.8,cn:"这是我的朋友",vi:"Đây là bạn của tôi."},
+        {id:8,start:47.9,end:48.9,cn:"這是我的朋友",vi:"Đây là bạn của tôi."},
+        {id:9,start:55.9,end:57.2,cn:"她是我的老師",vi:"Cô ấy là giáo viên của tôi."},
+        {id:10,start:59.3,end:60.4,cn:"他是我的老師",vi:"Anh ấy là giáo viên của tôi."},
+        {id:11,start:66.9,end:68.3,cn:"你叫什么名字?",vi:"Bạn tên là gì?"},
+        {id:12,start:70.3,end:71.3,cn:"你叫什么名字",vi:"Bạn tên là gì?"}
+      ]
     };
 
-    let player;
-    let checkTimeInterval;
-    let currentIndex = -1; 
+    let player=null, checkTimeInterval=null, currentIndex=-1;
+    let lastEditToken=0;
+    const editor=()=>document.getElementById('answerEditor');
 
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('ytplayer', {
-        height: '100%', width: '100%', videoId: lessonData.videoId,
-        playerVars: { 'playsinline': 1, 'controls': 1, 'rel': 0 }
+    function onYouTubeIframeAPIReady(){
+      player=new YT.Player('ytplayer',{height:'100%',width:'100%',videoId:lessonData.videoId,playerVars:{playsinline:1,controls:1,rel:0},events:{onReady:initUI}});
+    }
+
+    function initUI(){
+      const list=document.getElementById('sentenceList');
+      document.getElementById('sentenceCount').textContent=`${lessonData.sentences.length} câu`;
+      lessonData.sentences.forEach((sentence,index)=>{
+        const btn=document.createElement('button');
+        btn.className='btn-play-sentence';btn.id=`btn-sentence-${index}`;
+        btn.textContent=`Câu ${sentence.id}: ${sentence.vi}`;
+        btn.onclick=()=>playSentence(index);
+        list.appendChild(btn);
       });
-      initUI();
-    }
-
-    function initUI() {
-      const listContainer = document.getElementById('sentenceList');
-      
-      lessonData.sentences.forEach((sentence, index) => {
-        const btn = document.createElement('button');
-        btn.className = 'btn-play-sentence';
-        btn.id = `btn-sentence-${index}`;
-        btn.innerText = `Câu ${sentence.id}: ${sentence.vi}`;
-        btn.onclick = () => playSentence(index);
-        listContainer.appendChild(btn);
+      document.getElementById('btnPrev').onclick=()=>playSentence(currentIndex-1);
+      document.getElementById('btnNext').onclick=()=>playSentence(currentIndex+1);
+      document.getElementById('btnReplay').onclick=()=>replayCurrent();
+      editor().addEventListener('input',onEditorInput);
+      editor().addEventListener('compositionstart',()=>{editor().dataset.composing='1';});
+      editor().addEventListener('compositionend',()=>{editor().dataset.composing='0';});
+      editor().addEventListener('keydown',handleEditorKeydown);
+      editor().addEventListener('paste',e=>{
+        e.preventDefault();
+        const text=(e.clipboardData||window.clipboardData).getData('text').replace(/\r?\n/g,'');
+        insertPlainText(text);
       });
-
-      document.getElementById('btnPrev').onclick = () => playSentence(currentIndex - 1);
-      document.getElementById('btnNext').onclick = () => playSentence(currentIndex + 1);
-      document.getElementById('btnReplay').onclick = () => playSentence(currentIndex);
+      document.getElementById('inputArea').style.display='block';
     }
 
-    function updateProgress() {
-      const total = lessonData.sentences.length;
-      const done = currentIndex < 0 ? 0 : currentIndex + 1;
-      document.getElementById('progressText').innerText = `${done} / ${total}`;
-      document.getElementById('progressBar').style.width = `${total ? done / total * 100 : 0}%`;
+    function updateProgress(){
+      const total=lessonData.sentences.length;
+      const done=currentIndex<0?0:currentIndex+1;
+      document.getElementById('progressText').textContent=`${done} / ${total}`;
+      document.getElementById('progressBar').style.width=`${total?done/total*100:0}%`;
     }
 
-    function playSentence(index) {
-      if (index < 0 || index >= lessonData.sentences.length) return;
-      
-      currentIndex = index;
-      const sentence = lessonData.sentences[index];
+    function playSentence(index){
+      if(index<0||index>=lessonData.sentences.length)return;
+      currentIndex=index;
+      const s=lessonData.sentences[index];
       updateProgress();
-      document.getElementById('videoLabel').innerText = `Câu ${sentence.id}`;
-      document.getElementById('statusPill').innerText = 'Đang luyện';
+      document.getElementById('videoLabel').textContent=`Câu ${s.id}`;
+      document.getElementById('statusPill').textContent='Đang luyện';
       document.getElementById('statusPill').classList.remove('success');
-
-      document.querySelectorAll('.btn-play-sentence').forEach(b => b.classList.remove('active'));
-      const activeBtn = document.getElementById(`btn-sentence-${index}`);
-      activeBtn.classList.add('active');
-      activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); 
-
-      document.getElementById('inputArea').style.display = 'flex';
-      document.getElementById('viHint').innerText = "Gợi ý: " + sentence.vi;
-
-      document.getElementById('btnPrev').disabled = (currentIndex === 0);
-      document.getElementById('btnNext').disabled = (currentIndex === lessonData.sentences.length - 1);
-
-      player.seekTo(sentence.start);
-      player.playVideo();
-
+      document.getElementById('checkMessage').textContent='';
+      document.getElementById('checkMessage').classList.remove('success');
+      document.querySelectorAll('.btn-play-sentence').forEach(b=>b.classList.remove('active'));
+      const active=document.getElementById(`btn-sentence-${index}`);active.classList.add('active');active.scrollIntoView({behavior:'smooth',block:'nearest'});
+      document.getElementById('viHint').textContent='Gợi ý: '+s.vi;
+      document.getElementById('btnPrev').disabled=currentIndex===0;
+      document.getElementById('btnNext').disabled=currentIndex===lessonData.sentences.length-1;
       clearInterval(checkTimeInterval);
-      checkTimeInterval = setInterval(() => {
-        if (player.getCurrentTime() >= sentence.end) {
-          player.pauseVideo();
-          clearInterval(checkTimeInterval);
-        }
-      }, 100);
-
-      renderGrid(sentence.cn, sentence.pinyin);
+      player.seekTo(s.start,true);player.playVideo();
+      checkTimeInterval=setInterval(()=>{
+        if(player && player.getCurrentTime()>=s.end){player.pauseVideo();clearInterval(checkTimeInterval);}
+      },100);
+      clearEditor();
+      setTimeout(()=>editor().focus(),30);
     }
 
-    function renderGrid(chineseText, pinyinAnswers = []) {
-      const container = document.getElementById('gridContainer');
-      container.innerHTML = '';
-      const punctuationRegex = /[，。！？、！?.,\s]/;
-      let answerIndex = 0;
-
-      for (let i = 0; i < chineseText.length; i++) {
-        const char = chineseText[i];
-        if (punctuationRegex.test(char)) {
-          const span = document.createElement('span');
-          span.className = 'punctuation';
-          span.innerText = char;
-          container.appendChild(span);
-        } else {
-          const input = document.createElement('input');
-          input.type = 'text';
-          input.inputMode = 'text';
-          input.autocomplete = 'off';
-          input.autocapitalize = 'none';
-          input.spellcheck = false;
-          input.className = 'char-input';
-          input.dataset.correctChar = char;
-          input.dataset.correctPinyin = (pinyinAnswers[answerIndex] || '').toLowerCase();
-          input.dataset.hanzi = char;
-          input.setAttribute('aria-label', `Gõ Pinyin để chọn chữ Hán: ${char}`);
-          container.appendChild(input);
-          answerIndex++;
-        }
-      }
-      setupInputJumping();
+    function replayCurrent(){
+      if(currentIndex<0||!player)return;
+      const s=lessonData.sentences[currentIndex];
+      clearInterval(checkTimeInterval);
+      player.seekTo(s.start,true);player.playVideo();
+      checkTimeInterval=setInterval(()=>{
+        if(player && player.getCurrentTime()>=s.end){player.pauseVideo();clearInterval(checkTimeInterval);}
+      },100);
     }
 
-    function normalizeHanzi(value) {
-      return value.trim();
+    function clearEditor(){
+      const el=editor();
+      el.classList.remove('checked');
+      el.innerHTML='';
+      el.dataset.composing='0';
+      lastEditToken++;
     }
 
-    function setupInputJumping() {
-      const inputs = document.querySelectorAll('.char-input');
-      inputs.forEach((input, index) => {
-        let composing = false;
+    function getEditorText(){return editor().innerText.replace(/\u00a0/g,' ');}
 
-        input.addEventListener('compositionstart', () => {
-          composing = true;
-          input.classList.remove('correct', 'incorrect');
-        });
-
-        input.addEventListener('compositionend', () => {
-          composing = false;
-          input.classList.remove('correct', 'incorrect');
-          // Sau khi chọn ứng viên từ IME, trình duyệt sẽ trả về chữ Hán.
-          // Không lọc ký tự ở đây để tránh phá quá trình gõ Pinyin/IME.
-        });
-
-        input.addEventListener('input', () => {
-          input.classList.remove('correct', 'incorrect');
-        });
-
-        input.addEventListener('keydown', (e) => {
-          if (e.isComposing || composing) return;
-
-          if (e.key === ' ') {
-            e.preventDefault();
-            if (input.value.trim() && index < inputs.length - 1) {
-              inputs[index + 1].focus();
-            }
-            return;
-          }
-
-          if (e.key === 'Backspace' && !e.target.value && index > 0) {
-            e.preventDefault();
-            inputs[index - 1].focus();
-            return;
-          }
-
-          if (e.key === 'Enter') {
-            e.preventDefault();
-            checkAnswer();
-          }
-        });
-      });
-
-      if (inputs.length > 0) inputs[0].focus();
+    function insertPlainText(text){
+      const sel=window.getSelection();
+      if(!sel||!sel.rangeCount)return;
+      const range=sel.getRangeAt(0);range.deleteContents();
+      const node=document.createTextNode(text);range.insertNode(node);range.setStartAfter(node);range.collapse(true);sel.removeAllRanges();sel.addRange(range);onEditorInput();
     }
 
-    function checkAnswer() {
-      const inputs = document.querySelectorAll('.char-input');
-      let allCorrect = true;
-      inputs.forEach(input => {
-        const userAnswer = normalizeHanzi(input.value);
-        const correctAnswer = normalizeHanzi(input.dataset.correctChar || '');
-        input.classList.remove('correct', 'incorrect');
-
-        if (userAnswer === correctAnswer) {
-          input.classList.add('correct');
-        } else {
-          input.classList.add('incorrect');
-          allCorrect = false;
-        }
-      });
-
-      if (allCorrect) {
-        document.getElementById('statusPill').innerText = '✓ Chính xác';
-        document.getElementById('statusPill').classList.add('success');
-        setTimeout(() => alert("🎉 Quá chuẩn! Chuyển sang câu tiếp theo thôi!"), 100);
-      } else {
-        document.getElementById('statusPill').innerText = 'Chữ Hán chưa đúng';
+    function onEditorInput(){
+      lastEditToken++;
+      const el=editor();
+      if(el.classList.contains('checked')){
+        el.classList.remove('checked');
+        document.getElementById('statusPill').textContent='Đang luyện';
         document.getElementById('statusPill').classList.remove('success');
+        document.getElementById('checkMessage').textContent='';
+        document.getElementById('checkMessage').classList.remove('success');
+        // Xóa highlight nhưng giữ nguyên chữ người học.
+        const plain=el.innerText.replace(/\u00a0/g,' ');el.textContent=plain;placeCaretAtEnd(el);
       }
     }
 
-    // TÍCH HỢP PHÍM TẮT
-    document.addEventListener('keydown', (e) => {
-      // Khi Windows IME đang chọn ứng viên Pinyin -> chữ Hán, không can thiệp
-      // vào các phím điều hướng/ứng viên của IME.
-      if (e.isComposing || e.keyCode === 229) return;
+    function placeCaretAtEnd(node){
+      const range=document.createRange();range.selectNodeContents(node);range.collapse(false);
+      const sel=window.getSelection();sel.removeAllRanges();sel.addRange(range);
+    }
 
-      // Mũi tên trái/phải đổi câu, kể cả khi đang focus vào ô chữ.
-      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === 'MediaTrackNext') {
+    function handleEditorKeydown(e){
+      // Khi IME đang composition, tuyệt đối không cướp Space/Enter/Arrow.
+      if(e.isComposing || e.keyCode===229 || editor().dataset.composing==='1')return;
+
+      // Space: nghe lại. Vì đang ở contenteditable và không còn composition,
+      // Space sẽ không chèn khoảng trắng vào bài.
+      if(e.code==='Space'){
         e.preventDefault();
-        document.getElementById('btnNext').click();
+        replayCurrent();
         return;
       }
 
-      if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'MediaTrackPrevious') {
-        e.preventDefault();
-        document.getElementById('btnPrev').click();
-        return;
-      }
-
-      // Ctrl + Arrow vẫn hoạt động như phím tắt đổi câu.
-      if (e.ctrlKey && e.key === 'ArrowRight') {
-        e.preventDefault();
-        document.getElementById('btnNext').click();
-        return;
-      }
-
-      if (e.ctrlKey && e.key === 'ArrowLeft') {
-        e.preventDefault();
-        document.getElementById('btnPrev').click();
-        return;
-      }
-
-      // Replay: Ctrl + Space
-      if (e.ctrlKey && e.code === 'Space') {
-        e.preventDefault();
-        document.getElementById('btnReplay').click();
-        return;
-      }
-
-      // Enter kiểm tra đáp án.
-      if (e.key === 'Enter') {
+      if(e.key==='Enter'){
         e.preventDefault();
         checkAnswer();
       }
-    });
+      // ArrowLeft / ArrowRight KHÔNG bị app bắt nữa: để di chuyển con trỏ.
+    }
 
+    function stripPunctuation(s){return s.replace(/[，。！？、,.!?；;：:“”‘’"'()（）【】\[\]{}\s]/g,'');}
+
+    function splitGraphemes(text){return Array.from(text);}
+
+    function checkAnswer(){
+      if(currentIndex<0)return;
+      const s=lessonData.sentences[currentIndex];
+      const raw=getEditorText();
+      const target=splitGraphemes(stripPunctuation(s.cn));
+      const user=splitGraphemes(stripPunctuation(raw));
+      const result=[];
+      let allCorrect=user.length===target.length;
+      const max=Math.max(user.length,target.length);
+
+      for(let i=0;i<max;i++){
+        const u=user[i]||'';const t=target[i]||'';
+        if(u===t){result.push({ch:u,cls:'ok-char'});}else if(u){result.push({ch:u,cls:'bad-char'});allCorrect=false;}else{result.push({ch:'·',cls:'missing-char'});allCorrect=false;}
+      }
+
+      const el=editor();
+      el.classList.add('checked');
+      el.innerHTML=result.map(x=>`<span class="${x.cls}">${escapeHtml(x.ch)}</span>`).join('');
+      placeCaretAtEnd(el);
+      document.getElementById('statusPill').textContent=allCorrect?'✓ Chính xác':'Kiểm tra lại';
+      document.getElementById('statusPill').classList.toggle('success',allCorrect);
+      const msg=document.getElementById('checkMessage');
+      msg.textContent=allCorrect?'Tuyệt vời!':'Có chữ chưa đúng';msg.classList.toggle('success',allCorrect);
+    }
+
+    function escapeHtml(text){return text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');}
+
+    // Phím tắt toàn trang:
+    // PageUp/PageDown = chuyển câu. Space được xử lý riêng trong editor để nghe lại.
+    document.addEventListener('keydown',e=>{
+      if(e.isComposing||e.keyCode===229)return;
+      const tag=document.activeElement?.tagName;
+      const inEditor=document.activeElement===editor() || editor().contains(document.activeElement);
+      if(e.key==='PageDown'){
+        e.preventDefault();playSentence(currentIndex+1);return;
+      }
+      if(e.key==='PageUp'){
+        e.preventDefault();playSentence(currentIndex-1);return;
+      }
+      // Enter ngoài editor cũng kiểm tra, nhưng trong editor đã xử lý ở trên.
+      if(e.key==='Enter' && !inEditor){e.preventDefault();checkAnswer();}
+    });
   </script>
 </body>
 </html>
